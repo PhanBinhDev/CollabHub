@@ -1,0 +1,71 @@
+{
+  "name": "collabhub",
+  "version": "1.0.0",
+  "author": {
+    "name": "ManfredDev",
+    "email": "binhphan.dev@gmail.com"
+  },
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc -b",
+    "format": "prettier --write .",
+    "lint:fix": "next lint --fix",
+    "prepare": "husky install",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "@auth/core": "0.37.0",
+    "@convex-dev/auth": "^0.0.90",
+    "@convex-dev/eslint-plugin": "^1.0.0",
+    "@formatjs/intl-localematcher": "^0.6.0",
+    "@tabler/icons-react": "^3.35.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "convex": "^1.28.2",
+    "negotiator": "^1.0.0",
+    "next": "15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/negotiator": "^0.6.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@typescript-eslint/parser": "^8.25.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "dotenv": "^16.4.7",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-playwright": "^2.2.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "eslint-plugin-unicorn": "^57.0.0",
+    "husky": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.5.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4",
+    "tsx": "^4.19.3",
+    "typescript": "^5"
+  }
+}
