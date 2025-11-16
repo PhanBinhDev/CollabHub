@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name": "CollabHub"
+  },
+  "nav": {
+    "features": "Tính năng",
+    "app": "Ứng dụng",
+    "pricing": "Giá cả",
+    "getStarted": "Bắt đầu"
+  }
+}

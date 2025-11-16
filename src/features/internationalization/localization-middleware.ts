@@ -19,10 +19,18 @@ export function localizationMiddleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
-    return;
+    const localeInPath = i18n.locales.find(
+      locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+    );
+    const res = NextResponse.next();
+    if (localeInPath) {
+      res.cookies.set('locale', localeInPath, { path: '/', sameSite: 'lax' });
+    }
+    return res;
   }
 
   const locale = getLocale(request);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  const res = NextResponse.next();
+  res.cookies.set('locale', locale, { path: '/', sameSite: 'lax' });
+  return res;
 }

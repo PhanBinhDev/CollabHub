@@ -1,4 +1,7 @@
 {
+  "app": {
+    "name": "CollabHub"
+  },
   "counter": {
     "decrement": "Decrement",
     "increment": "Increment"

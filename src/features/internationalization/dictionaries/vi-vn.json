@@ -1,9 +1,0 @@
-{
-  "counter": {
-    "decrement": "Giảm",
-    "increment": "Tăng"
-  },
-  "landing": {
-    "welcome": "Chào mừng"
-  }
-}
