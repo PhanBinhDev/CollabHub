@@ -13,5 +13,7 @@ export async function TranslateTextServer({ value }: { value: DictKey }) {
   const dict = await getDictionary(locale);
   const translated = getByPath(dict, value) ?? value;
 
+  console.log('Translated:', { locale, value, translated });
+
   return <>{translated}</>;
 }

@@ -1,0 +1,17 @@
+{
+  "app": {
+    "name": "CollabHub"
+  },
+  "nav": {
+    "features": "Features",
+    "app": "Apps",
+    "pricing": "Pricing",
+    "getStarted": "Get Started"
+  },
+  "common": {
+    "changeLanguage": "Change language",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}

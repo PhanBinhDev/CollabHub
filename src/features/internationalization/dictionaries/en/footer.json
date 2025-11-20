@@ -1,14 +1,4 @@
 {
-  "app": {
-    "name": "CollabHub"
-  },
-  "counter": {
-    "decrement": "Decrement",
-    "increment": "Increment"
-  },
-  "landing": {
-    "welcome": "Welcome"
-  },
   "footer": {
     "description": "Collaborate seamlessly with your team in one place",
     "product": "Product",

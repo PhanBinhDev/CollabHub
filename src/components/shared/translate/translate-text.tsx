@@ -7,6 +7,8 @@ const TranslateText = ({ value }: { value: DictKey }) => {
 
   const translated = getByPath(dict, value) ?? value;
 
+  console.log('Translated:', { value, translated });
+
   return <>{translated}</>;
 };
 
