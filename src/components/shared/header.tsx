@@ -3,11 +3,11 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import TranslateText from './translate-text';
+import TranslateText from './translate/translate-text';
 
 export default function Header() {
   return (
-    <header className="fixed top-2 left-2 right-2 md:top-4 md:left-4 md:right-4 z-50 flex items-center justify-between px-3 py-3 md:px-6 md:py-4 bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-xl md:rounded-2xl shadow-lg max-w-7xl mx-auto">
+    <header className="fixed top-2 left-2 right-2 md:top-4 md:left-4 md:right-4 z-50 flex items-center justify-between px-3 py-3 md:px-6 md:py-4 bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-xl md:rounded-2xl shadow-[0px_0px_6px_0px_rgba(0,0,0,0.1)] max-w-7xl mx-auto">
       <Link
         href="/"
         className="flex items-center gap-2 font-bold text-lg md:text-xl"

@@ -8,5 +8,26 @@
   },
   "landing": {
     "welcome": "Welcome"
+  },
+  "footer": {
+    "description": "Collaborate seamlessly with your team in one place",
+    "product": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "apps": "Apps",
+    "updates": "Updates",
+    "company": "Company",
+    "about": "About",
+    "blog": "Blog",
+    "careers": "Careers",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "licenses": "Licenses",
+    "rights": "All rights reserved",
+    "sitemap": "Sitemap",
+    "status": "Status"
   }
 }
