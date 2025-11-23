@@ -50,8 +50,17 @@
     "update": "Update",
     "remove": "Remove",
     "refreshing": "Refreshing...",
+    "loadMore": "Load more",
     "loadingMore": "Loading more...",
     "refreshSuccess": "Refreshed successfully",
-    "refreshError": "Error refreshing data"
+    "refreshError": "Error refreshing data",
+    "somethingWrong": "Something went wrong. Please try again.",
+    "new": "New",
+    "sort": {
+      "newest": "Newest",
+      "oldest": "Oldest"
+    },
+    "description": "Description",
+    "noDescription": "No description provided"
   }
 }

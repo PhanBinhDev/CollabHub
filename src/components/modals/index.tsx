@@ -6,6 +6,8 @@ import { ModalAddEmail } from './modal-add-email';
 import { ModalRemoveAccount } from './modal-remove-account';
 import { ModalRemoveAvatar } from './modal-remove-avatar';
 import { ModalRemoveEmail } from './modal-remove-email';
+import { ModalUpdateEmail } from './modal-update-email';
+import ModalAddWorkspace from './modal-add-workspace';
 
 const Modals = () => {
   const { isModalOpen } = useModal();
@@ -23,6 +25,8 @@ const Modals = () => {
       {isModalOpen('REMOVE_ACCOUNT') && <ModalRemoveAccount />}
       {isModalOpen('ADD_EMAIL') && <ModalAddEmail />}
       {isModalOpen('REMOVE_EMAIL') && <ModalRemoveEmail />}
+      {isModalOpen('UPDATE_EMAIL') && <ModalUpdateEmail />}
+      {isModalOpen('ADD_WORKSPACE') && <ModalAddWorkspace />}
     </>
   );
 };

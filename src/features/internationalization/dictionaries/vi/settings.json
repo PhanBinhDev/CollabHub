@@ -68,7 +68,14 @@
         "removeEmailError": "Đã xảy ra lỗi khi xóa email. Vui lòng thử lại sau.",
         "deleteEmailTitle": "Xóa địa chỉ Email",
         "deleteEmailWarning": "Bạn có chắc chắn muốn xóa địa chỉ email này không? Hành động này không thể hoàn tác.",
-        "deleteEmailButton": "Xóa Email"
+        "deleteEmailButton": "Xóa Email",
+        "setPrimaryTitle": "Đặt làm Email chính",
+        "setPrimaryDescription": "Bạn có chắc chắn muốn đặt địa chỉ email này làm email chính của mình không?",
+        "setPrimaryButton": "Đặt làm Chính",
+        "setPrimarySuccess": "Đặt email làm chính thành công.",
+        "setPrimaryError": "Đã xảy ra lỗi khi đặt email làm chính. Vui lòng thử lại sau.",
+        "cancelSetPrimary": "Đã hủy đặt email làm chính",
+        "retryVerifyAfter": "Vui lòng chờ {{seconds}} giây trước khi thử xác minh lại."
       },
       "sessions": {
         "title": "Phiên đăng nhập",

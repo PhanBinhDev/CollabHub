@@ -50,8 +50,17 @@
     "update": "Cập nhật",
     "remove": "Gỡ bỏ",
     "refreshing": "Đang làm mới...",
+    "loadMore": "Tải thêm",
     "loadingMore": "Đang tải thêm...",
     "refreshSuccess": "Làm mới thành công",
-    "refreshError": "Lỗi khi làm mới dữ liệu"
+    "refreshError": "Lỗi khi làm mới dữ liệu",
+    "somethingWrong": "Đã xảy ra sự cố. Vui lòng thử lại.",
+    "new": "Mới",
+    "sort": {
+      "newest": "Mới nhất",
+      "oldest": "Cũ nhất"
+    },
+    "description": "Mô tả",
+    "noDescription": "Chưa có mô tả"
   }
 }

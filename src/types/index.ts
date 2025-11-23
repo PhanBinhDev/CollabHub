@@ -13,7 +13,7 @@ export type NavItem = {
 export type ModalType =
   | 'REMOVE_AVATAR'
   | 'REMOVE_ACCOUNT'
-  | 'CREATE_WORKSPACE'
+  | 'ADD_WORKSPACE'
   | 'EDIT_WORKSPACE'
   | 'DELETE_WORKSPACE'
   | 'INVITE_MEMBER'

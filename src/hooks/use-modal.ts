@@ -1,8 +1,6 @@
 import { ModalType } from '@/types';
 import { create } from 'zustand';
 
-
-
 interface ModalData {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;

@@ -70,10 +70,8 @@ export const ModalAddEmail = () => {
         return;
       }
 
-      // Reload user to get updated User object
       await user?.reload();
 
-      // Find the email address that was just added
       const emailAddress = user?.emailAddresses.find(a => a.id === res.id);
 
       if (!emailAddress) {

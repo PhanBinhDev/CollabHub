@@ -3,7 +3,9 @@ import common from './common.json';
 import dashboard from './dashboard.json';
 import footer from './footer.json';
 import landing from './landing.json';
+import notifications from './notifications.json';
 import settings from './settings.json';
+import workspaces from './workspaces.json';
 
 const vi = {
   ...common,
@@ -14,6 +16,8 @@ const vi = {
     ...dashboard,
   },
   ...settings,
+  ...notifications,
+  ...workspaces,
 };
 
 export default vi;

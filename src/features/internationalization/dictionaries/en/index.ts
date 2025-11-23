@@ -3,7 +3,9 @@ import common from './common.json';
 import dashboard from './dashboard.json';
 import footer from './footer.json';
 import landing from './landing.json';
-import settings from './settings.json'; 
+import notifications from './notifications.json';
+import settings from './settings.json';
+import workspaces from './workspaces.json';
 
 const en = {
   ...common,
@@ -13,7 +15,9 @@ const en = {
   dashboard: {
     ...dashboard,
   },
-  ...settings
+  ...settings,
+  ...notifications,
+  ...workspaces,
 };
 
 export default en;

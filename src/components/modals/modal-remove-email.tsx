@@ -24,6 +24,8 @@ export function ModalRemoveEmail() {
       return;
     }
 
+    console.log('remove email result:', result);
+
     if (result.success) {
       toast.success(dict?.settings.account.emails.removeEmailSuccess);
       user?.reload();

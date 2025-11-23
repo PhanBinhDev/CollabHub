@@ -1,0 +1,45 @@
+{
+  "workspaces": {
+    "title": "Không gian làm việc",
+    "description": "Quản lý không gian làm việc và nhóm của bạn",
+    "create": "Tạo không gian làm việc",
+    "createNew": "Tạo không gian làm việc mới",
+    "createNewDescription": "Bắt đầu cộng tác với nhóm của bạn",
+    "open": "Mở không gian làm việc",
+    "settings": "Cài đặt không gian làm việc",
+    "members": "thành viên",
+    "toggleFavorite": "Chuyển đổi yêu thích",
+    "stats": {
+      "notes": "Ghi chú",
+      "tasks": "Công việc",
+      "files": "Tệp",
+      "members": "Thành viên"
+    },
+    "quickActions": {
+      "title": "Hành động nhanh",
+      "createNote": "Tạo ghi chú mới",
+      "createTask": "Tạo công việc mới",
+      "uploadFile": "Tải lên tệp"
+    },
+    "tabs": {
+      "overview": "Tổng quan",
+      "notes": "Ghi chú",
+      "tasks": "Công việc",
+      "kanban": "Kanban",
+      "files": "Tệp",
+      "calendar": "Lịch"
+    },
+    "recentActivity": "Hoạt động gần đây",
+    "recentActivityDescription": "Xem những gì nhóm của bạn đã làm việc",
+    "createTitle": "Tạo không gian làm việc",
+    "createDescription": "Tạo một không gian làm việc mới để cộng tác với nhóm của bạn",
+    "name": "Tên không gian làm việc",
+    "namePlaceholder": "Không gian làm việc của tôi",
+    "descriptionPlaceholder": "Mô tả không gian làm việc của bạn...",
+    "uploadImage": "Tải lên hình ảnh",
+    "createSuccess": "Tạo không gian làm việc thành công",
+    "createError": "Tạo không gian làm việc thất bại",
+    "favoriteToggled": "Cập nhật trạng thái yêu thích thành công",
+    "favoriteError": "Cập nhật trạng thái yêu thích thất bại"
+  }
+}

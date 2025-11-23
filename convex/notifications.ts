@@ -1,6 +1,11 @@
 import { getAuthUserId } from '@convex-dev/auth/server';
-import { defineTable, paginationOptsValidator } from 'convex/server';
+import {
+  defineTable,
+  paginationOptsValidator,
+  PaginationResult,
+} from 'convex/server';
 import { v } from 'convex/values';
+import { Doc } from './_generated/dataModel';
 import { mutation, query } from './_generated/server';
 
 export const NotificationType = v.union(
@@ -14,7 +19,14 @@ export const NotificationType = v.union(
   v.literal('system'),
 );
 
+export const NotificationFilter = v.union(
+  v.literal('all'),
+  v.literal('unread'),
+  v.literal('read'),
+);
+
 export type NotificationType = typeof NotificationType.type;
+export type NotificationFilter = typeof NotificationFilter.type;
 
 export const notificationsTable = defineTable({
   userId: v.id('users'),
@@ -36,15 +48,14 @@ export const notificationsTable = defineTable({
 export const getUserNotifications = query({
   args: {
     paginationOpts: paginationOptsValidator,
-    filter: v.optional(
-      v.union(v.literal('all'), v.literal('unread'), v.literal('read')),
-    ),
+    filter: v.optional(NotificationFilter),
     type: v.optional(NotificationType),
+    order: v.optional(v.union(v.literal('asc'), v.literal('desc'))),
   },
   handler: async (ctx, args) => {
     const userId = await getAuthUserId(ctx);
     if (!userId) {
-      return { page: [], isDone: true, continueCursor: null };
+      return {} as PaginationResult<Doc<'notifications'>>;
     }
 
     const currentUser = await ctx.db
@@ -53,7 +64,7 @@ export const getUserNotifications = query({
       .first();
 
     if (!currentUser) {
-      return { page: [], isDone: true, continueCursor: null };
+      return {} as PaginationResult<Doc<'notifications'>>;
     }
 
     const filter = args.filter ?? 'all';
@@ -77,17 +88,11 @@ export const getUserNotifications = query({
       query = query.filter(q => q.eq(q.field('type'), args.type));
     }
 
-    const result = await query.order('desc').paginate(args.paginationOpts);
+    const result = await query
+      .order(args.order ?? 'desc')
+      .paginate(args.paginationOpts);
 
-    const page = result.page.map(notif => ({
-      ...notif,
-      metadata: notif.metadata ?? null,
-    }));
-
-    return {
-      ...result,
-      page,
-    };
+    return result;
   },
 });
 

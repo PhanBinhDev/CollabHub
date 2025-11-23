@@ -1,0 +1,25 @@
+{
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "filter": {
+      "all": "All",
+      "unread": "Unread",
+      "read": "Read"
+    },
+    "empty": "No notifications",
+    "viewDetails": "View details",
+    "filterByType": "Filter by type",
+    "allTypes": "All types",
+    "type": {
+      "mention": "Mention",
+      "comment": "Comment",
+      "task_assigned": "Task assigned",
+      "task_completed": "Task completed",
+      "team_invite": "Team invite",
+      "workspace_invite": "Workspace invite",
+      "message": "Message",
+      "system": "System"
+    }
+  }
+}

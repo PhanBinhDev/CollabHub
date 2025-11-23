@@ -1,0 +1,45 @@
+{
+  "workspaces": {
+    "title": "Workspaces",
+    "description": "Manage your workspaces and teams",
+    "create": "Create Workspace",
+    "createNew": "Create New Workspace",
+    "createNewDescription": "Start collaborating with your team",
+    "open": "Open Workspace",
+    "settings": "Workspace Settings",
+    "members": "members",
+    "toggleFavorite": "Toggle Favorite",
+    "stats": {
+      "notes": "Notes",
+      "tasks": "Tasks",
+      "files": "Files",
+      "members": "Members"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "createNote": "New Note",
+      "createTask": "New Task",
+      "uploadFile": "Upload File"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "notes": "Notes",
+      "tasks": "Tasks",
+      "kanban": "Kanban",
+      "files": "Files",
+      "calendar": "Calendar"
+    },
+    "recentActivity": "Recent Activity",
+    "recentActivityDescription": "See what your team has been working on",
+    "createTitle": "Create Workspace",
+    "createDescription": "Create a new workspace to collaborate with your team",
+    "name": "Workspace Name",
+    "namePlaceholder": "My Workspace",
+    "descriptionPlaceholder": "Describe your workspace...",
+    "uploadImage": "Upload Image",
+    "createSuccess": "Workspace created successfully",
+    "createError": "Failed to create workspace",
+    "favoriteToggled": "Favorite status updated",
+    "favoriteError": "Failed to update favorite status"
+  }
+}

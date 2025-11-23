@@ -68,7 +68,14 @@
         "removeEmailError": "There was an error removing the email. Please try again later.",
         "deleteEmailTitle": "Delete Email Address",
         "deleteEmailWarning": "Are you sure you want to delete this email address? This action cannot be undone.",
-        "deleteEmailButton": "Delete Email"
+        "deleteEmailButton": "Delete Email",
+        "setPrimaryTitle": "Set as Primary Email",
+        "setPrimaryDescription": "Are you sure you want to set this email address as your primary email?",
+        "setPrimaryButton": "Set as Primary",
+        "setPrimarySuccess": "Email set as primary successfully.",
+        "setPrimaryError": "There was an error setting the primary email. Please try again later.",
+        "cancelSetPrimary": "Primary email change cancelled",
+        "retryVerifyAfter": "Please wait {{seconds}} seconds before retrying verification."
       },
       "sessions": {
         "title": "Active Sessions",
