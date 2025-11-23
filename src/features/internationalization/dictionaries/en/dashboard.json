@@ -1,0 +1,54 @@
+{
+  "welcome": {
+    "title": "Welcome back, {{name}}!",
+    "subtitle": "Here's what's happening with your workspace today",
+    "greeting": "👋"
+  },
+  "stats": {
+    "workspaces": {
+      "title": "Workspaces",
+      "empty": "No active workspaces",
+      "create": "Create your first workspace",
+      "active":"{{count}} active workspaces"
+    },
+    "documents": {
+      "title": "Documents",
+      "empty": "No documents yet",
+      "recent": "{{count}} recent documents"
+    },
+    "collaborators": {
+      "title": "Collaborators",
+      "empty": "No collaborators yet",
+      "active": "{{count}} active members"
+    },
+    "activity": {
+      "title": "Today's Activity",
+      "empty": "No activity today",
+      "updates": "{{count}} updates"
+    }
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "newDocument": "New Document",
+    "newWhiteboard": "New Whiteboard",
+    "newWorkspace": "New Workspace",
+    "inviteTeam": "Invite Team"
+  },
+  "recentDocuments": {
+    "title": "Recent Documents",
+    "empty": "No recent documents",
+    "emptyDescription": "Create or open a document to get started",
+    "viewAll": "View All Documents"
+  },
+  "recentActivity": {
+    "title": "Recent Activity",
+    "empty": "No recent activity",
+    "emptyDescription": "Start collaborating to see activity here"
+  },
+  "upcomingEvents": {
+    "title": "Upcoming Events",
+    "empty": "No upcoming events",
+    "emptyDescription": "Schedule events in your workspace calendar",
+    "viewCalendar": "View Calendar"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "welcome": {
+    "title": "Chào mừng trở lại, {{name}}!",
+    "subtitle": "Đây là những gì đang diễn ra trong không gian làm việc của bạn hôm nay",
+    "greeting": "👋"
+  },
+  "stats": {
+    "workspaces": {
+      "title": "Không gian làm việc",
+      "empty": "Chưa có không gian làm việc",
+      "create": "Tạo không gian đầu tiên",
+      "active":"{{count}} không gian làm việc đang hoạt động"
+    },
+    "documents": {
+      "title": "Tài liệu",
+      "empty": "Chưa có tài liệu",
+      "recent": "{{count}} tài liệu gần đây"
+    },
+    "collaborators": {
+      "title": "Cộng tác viên",
+      "empty": "Chưa có cộng tác viên",
+      "active": "{{count}} thành viên đang hoạt động"
+    },
+    "activity": {
+      "title": "Hoạt động hôm nay",
+      "empty": "Chưa có hoạt động",
+      "updates": "{{count}} cập nhật"
+    }
+  },
+  "quickActions": {
+    "title": "Thao tác nhanh",
+    "newDocument": "Tài liệu mới",
+    "newWhiteboard": "Bảng vẽ mới",
+    "newWorkspace": "Không gian mới",
+    "inviteTeam": "Mời nhóm"
+  },
+  "recentDocuments": {
+    "title": "Tài liệu gần đây",
+    "empty": "Chưa có tài liệu gần đây",
+    "emptyDescription": "Tạo hoặc mở tài liệu để bắt đầu",
+    "viewAll": "Xem tất cả tài liệu"
+  },
+  "recentActivity": {
+    "title": "Hoạt động gần đây",
+    "empty": "Chưa có hoạt động",
+    "emptyDescription": "Bắt đầu cộng tác để xem hoạt động tại đây"
+  },
+  "upcomingEvents": {
+    "title": "Sự kiện sắp tới",
+    "empty": "Chưa có sự kiện",
+    "emptyDescription": "Lên lịch sự kiện trong lịch làm việc của bạn",
+    "viewCalendar": "Xem lịch"
+  }
+}

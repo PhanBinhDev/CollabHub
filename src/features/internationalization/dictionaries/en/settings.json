@@ -1,0 +1,184 @@
+{
+  "settings": {
+    "title": "Account Settings",
+    "subtitle": "Manage your account settings and preferences",
+    "sections": {
+      "general": "GENERAL SETTINGS",
+      "workspace": "WORKSPACE SETTINGS"
+    },
+    "nav": {
+      "apps": "Apps",
+      "account": "Account",
+      "notifications": "Notification",
+      "language": "Language & Region",
+      "general": "General",
+      "team": "Members",
+      "billing": "Billing"
+    },
+    "account": {
+      "profile": {
+        "title": "My Profile",
+        "description": "Update your personal information",
+        "changeImage": "Change Image",
+        "removeImage": "Remove",
+        "removeImageTitle": "Remove Profile Image",
+        "removeImageDesc": "Are you sure you want to remove your profile image? This action cannot be undone.",
+        "imageFormats": "We support JPEG, PNG and GIFs under 2MB",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "bio": "Bio",
+        "bioPlaceholder": "Write a few lines about yourself...",
+        "phone": "Phone Number",
+        "email": "Email",
+        "emailReadonly": "Email (read-only)",
+        "removeImageSuccess": "Profile image removed successfully.",
+        "removeImageError": "There was an error removing your profile image. Please try again later.",
+        "updateSuccess": "Profile updated successfully.",
+        "updateFailure": "Failed to update profile.",
+        "imageLimitSize": "Image size must be less than 2MB",
+        "nameEmpty": "Name cannot be empty"
+      },
+      "emails": {
+        "title": "Email Addresses",
+        "description": "Manage email addresses associated with your account",
+        "primary": "Primary",
+        "unverified": "Unverified",
+        "setPrimary": "Set as Primary",
+        "addEmail": "Add Email Address",
+        "managingEmails": "Opening Clerk to manage emails",
+        "addTitle": "Add Email Address",
+        "addDescription": "Add a new email address to your account",
+        "verificationSent": "Verification code sent",
+        "addSuccess": "Email added successfully",
+        "addError": "Failed to add email",
+        "emailExists": "This email is already in use",
+        "invalidCode": "Invalid verification code",
+        "checkEmailTitle": "Check Your Email",
+        "checkEmailDescription": "We've sent a verification link to your email address",
+        "checkInbox": "Check your inbox and click the verification link",
+        "tryAnotherEmail": "Try another email",
+        "verifying": "Verifying Email...",
+        "verifyingDescription": "Please wait while we verify your email address",
+        "verificationSuccess": "Email Verified Successfully",
+        "verificationSuccessDescription": "Your email address has been added to your account",
+        "verificationFailed": "Verification Failed",
+        "backToSettings": "Back to Settings",
+        "cancelDeleteEmail": "Email deletion cancelled",
+        "removeEmailSuccess": "Email removed successfully",
+        "removeEmailError": "There was an error removing the email. Please try again later.",
+        "deleteEmailTitle": "Delete Email Address",
+        "deleteEmailWarning": "Are you sure you want to delete this email address? This action cannot be undone.",
+        "deleteEmailButton": "Delete Email"
+      },
+      "sessions": {
+        "title": "Active Sessions",
+        "description": "Manage devices and sessions where you're signed in",
+        "current": "Current Session",
+        "active": "Active",
+        "revoke": "Sign Out",
+        "revoking": "Signing Out",
+        "revokingAllSessions": "Signing Out All Sessions",
+        "signOutAll": "Sign Out All Sessions",
+        "signOutAllOthers": "Sign Out All Other Sessions",
+        "noSessions": "No other active sessions found.",
+        "managingSessions": "Opening Clerk to manage sessions",
+        "revokeSuccess": "Session signed out successfully.",
+        "revokeError": "There was an error signing out of the session. Please try again later.",
+        "signOutAllSuccess": "All sessions signed out successfully.",
+        "signOutAllError": "There was an error signing out of all sessions. Please try again later."
+      },
+      "danger": {
+        "title": "Danger Zone",
+        "logoutAll": "Log out of all devices",
+        "logoutAllDesc": "Log out of all other active sessions on other devices",
+        "logoutButton": "Log out",
+        "deleteAccount": "Delete my account",
+        "deleteAccountTitle": "Delete Account",
+        "deleteAccountWarning": "Are you sure you want to delete your account? This action cannot be undone.",
+        "deleteAccountDesc": "Permanently delete the account and remove access from all workspaces",
+        "deleteButton": "Delete Account",
+        "deleteSuccess": "Your account has been successfully deleted.",
+        "deleteError": "There was an error deleting your account. Please try again later.",
+        "confirmationLabel": "Please type \"{{text}}\" to confirm",
+        "cancelledVerification": "Account deletion cancelled"
+      },
+      "saveChanges": "Save Changes"
+    },
+    "language": {
+      "title": "Language & Region",
+      "description": "Customize language, timezone and date formats",
+      "language": "Language",
+      "timezone": "Timezone",
+      "dateFormat": "Date Format",
+      "timeFormat": "Time Format"
+    },
+    "notifications": {
+      "email": {
+        "title": "Email Notifications",
+        "description": "Manage your email notification preferences",
+        "newWorkspace": "New workspace created",
+        "newWorkspaceDesc": "Get notified when someone creates a new workspace",
+        "invitation": "Workspace invitations",
+        "invitationDesc": "Receive emails when you're invited to a workspace",
+        "taskAssigned": "Task assigned to you",
+        "taskAssignedDesc": "Get notified when a task is assigned to you",
+        "comments": "Comments and mentions",
+        "commentsDesc": "Receive emails for comments and @mentions",
+        "weeklySummary": "Weekly activity summary",
+        "weeklySummaryDesc": "Get a weekly digest of your workspace activity"
+      },
+      "push": {
+        "title": "Push Notifications",
+        "description": "Manage your push notification preferences",
+        "messages": "Direct messages",
+        "messagesDesc": "Get notified when someone sends you a message",
+        "taskUpdates": "Task updates",
+        "taskUpdatesDesc": "Receive notifications for task status changes",
+        "mentions": "@Mentions",
+        "mentionsDesc": "Get notified when someone mentions you",
+        "reminders": "Reminders",
+        "remindersDesc": "Receive reminders for upcoming tasks and events"
+      },
+      "inApp": {
+        "title": "In-App Notifications",
+        "description": "Manage notifications within the application",
+        "enableAll": "Enable all in-app notifications",
+        "enableAllDesc": "Show notifications for all activities within the app"
+      }
+    },
+    "apps": {
+      "title": "Apps & Integrations",
+      "description": "Connect your favorite apps to enhance your workflow",
+      "connectedApps": "{{count}} of {{total}} apps connected",
+      "connected": "Connected",
+      "connect": "Connect",
+      "disconnect": "Disconnect",
+      "configure": "Configure",
+      "noResults": "No integrations found"
+    },
+    "team": {
+      "invite": {
+        "title": "Invite Team Members",
+        "description": "Invite new members to collaborate in your workspace",
+        "button": "Send Invite"
+      },
+      "members": {
+        "title": "Team Members",
+        "description": "{{count}} members in this workspace"
+      },
+      "roles": {
+        "owner": "Owner",
+        "admin": "Admin",
+        "member": "Member"
+      },
+      "status": {
+        "pending": "Pending"
+      },
+      "actions": {
+        "changeRole": "Change Role",
+        "resendInvite": "Resend Invite",
+        "remove": "Remove Member"
+      }
+    }
+  }
+}

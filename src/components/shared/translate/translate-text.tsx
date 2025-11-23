@@ -1,13 +1,26 @@
+import { useClientDictionary } from '@/features/internationalization/dictionary-provider';
 import { DictKey } from '@/features/internationalization/get-dictionaries';
-import { useClientDictionary } from '@/features/internationalization/use-client-dictionary';
 import { getByPath } from '@/utils';
 
-const TranslateText = ({ value }: { value: DictKey }) => {
+type TranslateTextProps = {
+  value: DictKey;
+  params?: Record<string, string | number>;
+};
+
+const TranslateText = ({ value, params }: TranslateTextProps) => {
   const { dict } = useClientDictionary();
 
-  const translated = getByPath(dict, value) ?? value;
+  let translated = getByPath(dict, value) ?? value;
 
-  console.log('Translated:', { value, translated });
+  // Replace params if provided
+  if (params && typeof translated === 'string') {
+    Object.entries(params).forEach(([key, val]) => {
+      translated = (translated as string).replace(
+        new RegExp(`{{${key}}}`, 'g'),
+        String(val)
+      );
+    });
+  }
 
   return <>{translated}</>;
 };

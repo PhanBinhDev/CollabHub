@@ -1,36 +1,37 @@
-import { match } from '@formatjs/intl-localematcher';
-import Negotiator from 'negotiator';
-import { type NextRequest, NextResponse } from 'next/server';
-
-import { i18n } from './i18n-config';
+import { i18n, Locale } from '@/features/internationalization/i18n-config';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 function getLocale(request: NextRequest) {
-  const headers = {
-    'accept-language': request.headers.get('accept-language') ?? '',
-  };
-  const languages = new Negotiator({ headers }).languages();
-  return match(languages, i18n.locales, i18n.defaultLocale);
+  // Lấy từ cookie
+  const cookieLocale = request.cookies.get('locale')?.value;
+  if (cookieLocale && i18n.locales.includes(cookieLocale as Locale)) {
+    return cookieLocale as Locale;
+  }
+
+  // Fallback sang Accept-Language header
+  const acceptLanguage = request.headers.get('Accept-Language');
+  if (acceptLanguage) {
+    const preferredLocale = acceptLanguage.split(',')[0]?.split('-')[0];
+    if (preferredLocale && i18n.locales.includes(preferredLocale as Locale)) {
+      return preferredLocale;
+    }
+  }
+
+  return i18n.defaultLocale;
 }
 
 export function localizationMiddleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const pathnameHasLocale = i18n.locales.some(
-    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-  );
+  const locale = getLocale(request);
 
-  if (pathnameHasLocale) {
-    const localeInPath = i18n.locales.find(
-      locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-    );
-    const res = NextResponse.next();
-    if (localeInPath) {
-      res.cookies.set('locale', localeInPath, { path: '/', sameSite: 'lax' });
-    }
-    return res;
+  const response = NextResponse.next();
+
+  if (!request.cookies.get('locale')) {
+    response.cookies.set('locale', locale, {
+      path: '/',
+      maxAge: 31536000,
+    });
   }
 
-  const locale = getLocale(request);
-  const res = NextResponse.next();
-  res.cookies.set('locale', locale, { path: '/', sameSite: 'lax' });
-  return res;
+  return response;
 }

@@ -1,0 +1,184 @@
+{
+  "settings": {
+    "title": "Cài đặt tài khoản",
+    "subtitle": "Quản lý cài đặt tài khoản và tùy chọn",
+    "sections": {
+      "general": "CÀI ĐẶT CHUNG",
+      "workspace": "CÀI ĐẶT WORKSPACE"
+    },
+    "nav": {
+      "apps": "Ứng dụng",
+      "account": "Tài khoản",
+      "notifications": "Thông báo",
+      "language": "Ngôn ngữ & Khu vực",
+      "general": "Chung",
+      "team": "Thành viên",
+      "billing": "Thanh toán"
+    },
+    "account": {
+      "profile": {
+        "title": "Hồ sơ của tôi",
+        "description": "Cập nhật thông tin cá nhân",
+        "changeImage": "Đổi ảnh",
+        "removeImage": "Xóa",
+        "removeImageTitle": "Xóa ảnh hồ sơ",
+        "removeImageDesc": "Bạn có chắc chắn muốn xóa ảnh hồ sơ của mình không? Hành động này không thể hoàn tác.",
+        "imageFormats": "Hỗ trợ JPEG, PNG và GIF dưới 2MB",
+        "firstName": "Tên",
+        "lastName": "Họ",
+        "bio": "Tiểu sử",
+        "bioPlaceholder": "Viết một vài dòng về bạn...",
+        "phone": "Số điện thoại",
+        "email": "Email",
+        "emailReadonly": "Email (chỉ đọc)",
+        "removeImageSuccess": "Ảnh hồ sơ đã được xóa thành công.",
+        "removeImageError": "Đã xảy ra lỗi khi xóa ảnh hồ sơ của bạn. Vui lòng thử lại sau.",
+        "updateSuccess": "Cập nhật hồ sơ thành công.",
+        "updateFailure": "Cập nhật hồ sơ thất bại.",
+        "imageLimitSize": "Kích thước ảnh phải nhỏ hơn 2MB",
+        "nameEmpty": "Tên không được để trống"
+      },
+      "emails": {
+        "title": "Địa chỉ Email",
+        "description": "Quản lý các địa chỉ email liên kết với tài khoản của bạn",
+        "primary": "Chính",
+        "unverified": "Chưa xác minh",
+        "setPrimary": "Đặt làm Email chính",
+        "addEmail": "Thêm địa chỉ Email",
+        "managingEmails": "Đang mở Clerk để quản lý email",
+        "addTitle": "Thêm địa chỉ Email",
+        "addDescription": "Thêm địa chỉ email mới vào tài khoản của bạn",
+        "verificationSent": "Đã gửi mã xác minh",
+        "addSuccess": "Thêm email thành công",
+        "addError": "Thêm email thất bại",
+        "emailExists": "Email này đã được sử dụng",
+        "invalidCode": "Mã xác minh không hợp lệ",
+        "checkEmailTitle": "Kiểm tra Email của bạn",
+        "checkEmailDescription": "Chúng tôi đã gửi một liên kết xác minh đến địa chỉ email của bạn",
+        "checkInbox": "Kiểm tra hộp thư đến và nhấp vào liên kết xác minh",
+        "tryAnotherEmail": "Thử email khác",
+        "verifying": "Đang xác minh Email...",
+        "verifyingDescription": "Vui lòng chờ trong khi chúng tôi xác minh địa chỉ email của bạn",
+        "verificationSuccess": "Xác minh Email thành công",
+        "verificationSuccessDescription": "Địa chỉ email của bạn đã được thêm vào tài khoản của bạn",
+        "verificationFailed": "Xác minh thất bại",
+        "backToSettings": "Quay lại Cài đặt",
+        "cancelDeleteEmail": "Đã hủy xóa email",
+        "removeEmailSuccess": "Xóa email thành công",
+        "removeEmailError": "Đã xảy ra lỗi khi xóa email. Vui lòng thử lại sau.",
+        "deleteEmailTitle": "Xóa địa chỉ Email",
+        "deleteEmailWarning": "Bạn có chắc chắn muốn xóa địa chỉ email này không? Hành động này không thể hoàn tác.",
+        "deleteEmailButton": "Xóa Email"
+      },
+      "sessions": {
+        "title": "Phiên đăng nhập",
+        "description": "Quản lý các thiết bị và phiên đăng nhập của bạn",
+        "current": "Phiên hiện tại",
+        "active": "Hoạt động",
+        "revoke": "Đăng xuất",
+        "revoking": "Đang đăng xuất",
+        "revokingAllSessions": "Đang đăng xuất tất cả phiên",
+        "signOutAll": "Đăng xuất tất cả phiên",
+        "signOutAllOthers": "Đăng xuất tất cả phiên khác",
+        "noSessions": "Không tìm thấy phiên hoạt động khác.",
+        "managingSessions": "Đang mở Clerk để quản lý phiên",
+        "revokeSuccess": "Đăng xuất phiên thành công.",
+        "revokeError": "Đã xảy ra lỗi khi đăng xuất khỏi phiên. Vui lòng thử lại sau.",
+        "signOutAllSuccess": "Đăng xuất tất cả phiên thành công.",
+        "signOutAllError": "Đã xảy ra lỗi khi đăng xuất khỏi tất cả phiên. Vui lòng thử lại sau."
+      },
+      "danger": {
+        "title": "Vùng nguy hiểm",
+        "logoutAll": "Đăng xuất khỏi tất cả thiết bị",
+        "logoutAllDesc": "Đăng xuất khỏi tất cả các phiên hoạt động trên thiết bị khác",
+        "logoutButton": "Đăng xuất",
+        "deleteAccount": "Xóa tài khoản",
+        "deleteAccountTitle": "Xóa tài khoản",
+        "deleteAccountWarning": "Bạn có chắc chắn muốn xóa tài khoản của mình không? Hành động này không thể hoàn tác.",
+        "deleteAccountDesc": "Xóa vĩnh viễn tài khoản và gỡ quyền truy cập khỏi tất cả không gian làm việc",
+        "deleteButton": "Xóa tài khoản",
+        "deleteSuccess": "Tài khoản của bạn đã được xóa thành công.",
+        "deleteError": "Đã xảy ra lỗi khi xóa tài khoản của bạn. Vui lòng thử lại sau.",
+        "confirmationLabel": "Vui lòng nhập \"{{text}}\" để xác nhận",
+        "cancelledVerification": "Đã hủy xóa tài khoản"
+      },
+      "saveChanges": "Lưu thay đổi"
+    },
+    "language": {
+      "title": "Ngôn ngữ & Khu vực",
+      "description": "Tùy chỉnh ngôn ngữ, múi giờ và định dạng ngày tháng",
+      "language": "Ngôn ngữ",
+      "timezone": "Múi giờ",
+      "dateFormat": "Định dạng ngày",
+      "timeFormat": "Định dạng giờ"
+    },
+    "notifications": {
+      "email": {
+        "title": "Thông báo Email",
+        "description": "Quản lý tùy chọn thông báo qua email",
+        "newWorkspace": "Không gian làm việc mới được tạo",
+        "newWorkspaceDesc": "Nhận thông báo khi ai đó tạo không gian làm việc mới",
+        "invitation": "Lời mời không gian làm việc",
+        "invitationDesc": "Nhận email khi bạn được mời vào không gian làm việc",
+        "taskAssigned": "Công việc được giao cho bạn",
+        "taskAssignedDesc": "Nhận thông báo khi công việc được giao cho bạn",
+        "comments": "Bình luận và nhắc đến",
+        "commentsDesc": "Nhận email cho bình luận và @nhắc đến",
+        "weeklySummary": "Tóm tắt hoạt động hàng tuần",
+        "weeklySummaryDesc": "Nhận bản tóm tắt hoạt động hàng tuần của bạn"
+      },
+      "push": {
+        "title": "Thông báo đẩy",
+        "description": "Quản lý tùy chọn thông báo đẩy",
+        "messages": "Tin nhắn trực tiếp",
+        "messagesDesc": "Nhận thông báo khi ai đó gửi tin nhắn cho bạn",
+        "taskUpdates": "Cập nhật công việc",
+        "taskUpdatesDesc": "Nhận thông báo khi trạng thái công việc thay đổi",
+        "mentions": "@Nhắc đến",
+        "mentionsDesc": "Nhận thông báo khi ai đó nhắc đến bạn",
+        "reminders": "Lời nhắc",
+        "remindersDesc": "Nhận lời nhắc cho công việc và sự kiện sắp tới"
+      },
+      "inApp": {
+        "title": "Thông báo trong ứng dụng",
+        "description": "Quản lý thông báo trong ứng dụng",
+        "enableAll": "Bật tất cả thông báo trong ứng dụng",
+        "enableAllDesc": "Hiển thị thông báo cho tất cả hoạt động trong ứng dụng"
+      }
+    },
+    "apps": {
+      "title": "Ứng dụng & Tích hợp",
+      "description": "Kết nối các ứng dụng yêu thích để nâng cao quy trình làm việc",
+      "connectedApps": "{{count}} trong {{total}} ứng dụng đã kết nối",
+      "connected": "Đã kết nối",
+      "connect": "Kết nối",
+      "disconnect": "Ngắt kết nối",
+      "configure": "Cấu hình",
+      "noResults": "Không tìm thấy tích hợp nào"
+    },
+    "team": {
+      "invite": {
+        "title": "Mời thành viên",
+        "description": "Mời thành viên mới cộng tác trong không gian làm việc",
+        "button": "Gửi lời mời"
+      },
+      "members": {
+        "title": "Thành viên nhóm",
+        "description": "{{count}} thành viên trong không gian này"
+      },
+      "roles": {
+        "owner": "Chủ sở hữu",
+        "admin": "Quản trị viên",
+        "member": "Thành viên"
+      },
+      "status": {
+        "pending": "Đang chờ"
+      },
+      "actions": {
+        "changeRole": "Đổi vai trò",
+        "resendInvite": "Gửi lại lời mời",
+        "remove": "Xóa thành viên"
+      }
+    }
+  }
+}

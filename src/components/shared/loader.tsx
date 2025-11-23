@@ -1,6 +1,6 @@
 'use client';
 
-import { useClientDictionary } from '@/features/internationalization/use-client-dictionary';
+import { useClientDictionary } from '@/features/internationalization/dictionary-provider';
 import '@/styles/loader.css';
 
 export default function PageLoader({

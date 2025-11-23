@@ -1,0 +1,12 @@
+{
+  "changeLanguage": "Đổi ngôn ngữ",
+  "hero": {
+    "badge": "Nền tảng cộng tác AI",
+    "title": "Chào mừng đến với",
+    "subtitle": "Nền tảng cộng tác tối ưu cho các nhóm hiện đại",
+    "cta": {
+      "getStarted": "Bắt đầu miễn phí",
+      "goToDashboard": "Vào bảng điều khiển"
+    }
+  }
+}

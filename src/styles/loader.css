@@ -3,6 +3,29 @@
   height: 6em;
 }
 
+/* Responsive cho mobile */
+@media (max-width: 640px) {
+  .pl {
+    width: 4em;
+    height: 4em;
+  }
+  
+  .pl__ring {
+    stroke-width: 15;
+  }
+}
+
+@media (max-width: 375px) {
+  .pl {
+    width: 3em;
+    height: 3em;
+  }
+  
+  .pl__ring {
+    stroke-width: 12;
+  }
+}
+
 .pl__ring {
   animation: ringA 2s linear infinite;
 }

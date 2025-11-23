@@ -8,11 +8,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useClientDictionary } from '@/features/internationalization/dictionary-provider';
 import { i18n, type Locale } from '@/features/internationalization/i18n-config';
-import { useSwitchLocaleHref } from '@/features/internationalization/use-switch-locale-href';
-import { Languages } from 'lucide-react';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { IconCheck } from '@tabler/icons-react';
+import Image from 'next/image';
 
 const languageNames: Record<Locale, string> = {
   en: 'English',
@@ -20,40 +19,52 @@ const languageNames: Record<Locale, string> = {
 };
 
 const languageFlags: Record<Locale, string> = {
-  en: '🇺🇸',
-  vi: '🇻🇳',
+  en: '/flags/en.png',
+  vi: '/flags/vi.png',
 };
 
 export function ChangeLanguage() {
-  const params = useParams();
-  const currentLocale = (params?.lang as Locale) || i18n.defaultLocale;
-  const switchLocaleHref = useSwitchLocaleHref();
+  const { locale: currentLocale, setLocale } = useClientDictionary();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
-          <Languages className="h-5 w-5" />
+        <Button variant="ghost" size="icon" className="relative cursor-pointer">
+          <Image
+            src={languageFlags[currentLocale]}
+            alt={languageNames[currentLocale]}
+            width={24}
+            height={18}
+            className="rounded-sm"
+          />
           <span className="sr-only">
             <Translate value="common.changeLanguage" />
           </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent
+        align="end"
+        className="w-48 flex flex-col gap-1 p-1.5"
+      >
         {i18n.locales.map(locale => (
-          <DropdownMenuItem key={locale} asChild>
-            <Link
-              href={switchLocaleHref(locale)}
-              className={`flex items-center gap-2 ${
-                currentLocale === locale ? 'bg-accent' : ''
-              }`}
-            >
-              <span className="text-lg">{languageFlags[locale]}</span>
-              <span>{languageNames[locale]}</span>
-              {currentLocale === locale && (
-                <span className="ml-auto text-xs text-muted-foreground">✓</span>
-              )}
-            </Link>
+          <DropdownMenuItem
+            key={locale}
+            onClick={() => setLocale(locale)}
+            className={`flex items-center gap-2 cursor-pointer ${
+              currentLocale === locale ? 'bg-accent' : ''
+            }`}
+          >
+            <Image
+              src={languageFlags[locale]}
+              alt={languageNames[locale]}
+              width={20}
+              height={15}
+              className="rounded-sm object-cover"
+            />
+            <span>{languageNames[locale]}</span>
+            {currentLocale === locale && (
+              <IconCheck className="ml-auto text-muted-foreground" size={16} />
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

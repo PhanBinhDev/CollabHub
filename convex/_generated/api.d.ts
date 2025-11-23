@@ -8,8 +8,14 @@
  * @module
  */
 
+import type * as apps from "../apps.js";
 import type * as auth from "../auth.js";
 import type * as http from "../http.js";
+import type * as notifications from "../notifications.js";
+import type * as sessions from "../sessions.js";
+import type * as storage from "../storage.js";
+import type * as users from "../users.js";
+import type * as workspaces from "../workspaces.js";
 
 import type {
   ApiFromModules,
@@ -26,8 +32,14 @@ import type {
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  apps: typeof apps;
   auth: typeof auth;
   http: typeof http;
+  notifications: typeof notifications;
+  sessions: typeof sessions;
+  storage: typeof storage;
+  users: typeof users;
+  workspaces: typeof workspaces;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
 
