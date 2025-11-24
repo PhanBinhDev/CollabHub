@@ -89,7 +89,7 @@ export async function verifyEmailAddress(emailId: string) {
     }
 
     return { success: true };
-  } catch (error) {
-    
+  } catch {
+    return { success: false, error: 'Failed to verify email address' };
   }
 }
