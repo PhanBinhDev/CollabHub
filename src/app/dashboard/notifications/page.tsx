@@ -21,12 +21,16 @@ import {
 import { fetchMutation } from 'convex/nextjs';
 import Link from 'next/link';
 
+interface NotificationsPageProps {
+  searchParams?: Promise<{
+    [key: string]: string | undefined;
+  }>
+}
+
 export default async function NotificationsPage({
   searchParams,
-}: {
-  searchParams?: { [key: string]: string | undefined };
-}) {
-  const params = searchParams ?? {};
+}: NotificationsPageProps) {
+  const params = await searchParams ?? {};
 
   try {
     if (params.action === 'markAll') {

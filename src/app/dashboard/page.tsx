@@ -27,7 +27,8 @@ const DashboardPage = () => {
     todayActivity: 12,
   };
 
-  const userName = user?.name || 'User';
+  const userName =
+    ((user?.firstName || '') + ' ' + (user?.lastName || '')).trim() || 'User';
 
   return (
     <div className="container mx-auto px-4 py-6 md:px-6 lg:px-8">

@@ -12,9 +12,7 @@ const en = {
   ...auth,
   ...footer,
   ...landing,
-  dashboard: {
-    ...dashboard,
-  },
+  ...dashboard,
   ...settings,
   ...notifications,
   ...workspaces,

@@ -12,9 +12,7 @@ const vi = {
   ...auth,
   ...footer,
   ...landing,
-  dashboard: {
-    ...dashboard,
-  },
+  ...dashboard,
   ...settings,
   ...notifications,
   ...workspaces,
