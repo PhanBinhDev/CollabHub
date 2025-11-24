@@ -16,7 +16,6 @@ import type * as notifications from "../notifications.js";
 import type * as sessions from "../sessions.js";
 import type * as storage from "../storage.js";
 import type * as users from "../users.js";
-import type * as workspaces from "../workspaces.js";
 
 import type {
   ApiFromModules,
@@ -41,7 +40,6 @@ declare const fullApi: ApiFromModules<{
   sessions: typeof sessions;
   storage: typeof storage;
   users: typeof users;
-  workspaces: typeof workspaces;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
 

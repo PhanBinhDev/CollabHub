@@ -22,7 +22,6 @@ import {
   IconNotes,
   IconPaint,
   IconSettings,
-  IconUsers,
 } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -36,12 +35,6 @@ const navigation: NavItem[] = [
     icon: IconHome,
     translationKey: 'nav.dashboard',
     exactMatch: true,
-  },
-  {
-    name: 'Workspaces',
-    href: '/dashboard/workspaces',
-    icon: IconUsers,
-    translationKey: 'nav.workspaces',
   },
   {
     name: 'Notes',

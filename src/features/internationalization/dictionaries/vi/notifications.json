@@ -10,6 +10,7 @@
     "filterByType": "Lọc theo loại",
     "allTypes": "Tất cả loại",
     "empty": "Không có thông báo nào.",
+    "viewAll": "Xem tất cả thông báo",
     "viewDetails": "Xem chi tiết",
     "type": {
       "mention": "Đề cập",
@@ -20,6 +21,7 @@
       "workspace_invite": "Lời mời không gian làm việc",
       "message": "Tin nhắn",
       "system": "Hệ thống"
-    }
+    },
+    "new": "{{count}} mới"
   }
 }

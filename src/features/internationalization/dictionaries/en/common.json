@@ -25,11 +25,7 @@
     "activeUsers": "Active Users"
   },
   "notifications": {
-    "title": "Notifications",
-    "new": "{{count}} new",
-    "empty": "No new notifications",
-    "viewAll": "View All Notifications",
-    "markAllRead": "Mark all as read"
+    
   },
   "common": {
     "changeLanguage": "Change language",
