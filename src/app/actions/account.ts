@@ -61,6 +61,7 @@ export async function setPrimaryEmail(emailId: string) {
     return { success: true, email: updated };
   } catch (error) {
     console.error('Failed to set primary email:', error);
+    console.error('Failed Debug',error.errors);
     return { success: false, error: 'Failed to set primary email' };
   }
 }
