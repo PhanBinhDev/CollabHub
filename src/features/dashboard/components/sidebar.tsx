@@ -2,6 +2,7 @@
 
 import TranslateText from '@/components/shared/translate/translate-text';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Tooltip,
   TooltipContent,
@@ -10,11 +11,11 @@ import {
 import { cn } from '@/lib/utils';
 import { NavItem } from '@/types';
 import { isNavItemActive } from '@/utils';
+import { OrganizationSwitcher } from '@clerk/nextjs';
 import {
   IconBell,
   IconCalendarEvent,
   IconChecklist,
-  IconChevronLeft,
   IconChevronRight,
   IconFiles,
   IconHome,
@@ -23,7 +24,6 @@ import {
   IconPaint,
   IconSettings,
 } from '@tabler/icons-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -153,74 +153,51 @@ export function Sidebar() {
       )}
     >
       {/* Logo */}
-      <div className="h-16 flex items-center justify-between px-3 border-b border-border">
-        {!collapsed && (
-          <Link href="/dashboard" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0 overflow-hidden">
-              <Image
-                src="/logo.png"
-                alt="CollabHub"
-                width={40}
-                height={40}
-                className="object-cover"
-              />
+      <div className="flex items-center justify-between p-2 border-b border-border">
+        <OrganizationSwitcher
+          fallback={
+            <div
+              className={cn(
+                'flex items-center gap-2 w-full px-3 py-2.5 rounded-lg bg-muted',
+                collapsed ? 'justify-center p-2.5' : '',
+              )}
+            >
+              <Skeleton className="w-7 h-7 rounded bg-gray-500" />
+              {!collapsed && <Skeleton className="h-4 w-32 rounded" />}
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-lg text-foreground">
-                <TranslateText value="app.name" />
-              </span>
-              <span className="text-xs text-muted-foreground">
-                <TranslateText value="nav.realtimeWorkspace" />
-              </span>
-            </div>
-          </Link>
-        )}
-        {collapsed && (
-          <Link href="/dashboard" className="mx-auto">
-            <div className="w-10 h-10 rounded-lg overflow-hidden">
-              <Image
-                src="/logo.png"
-                alt="CollabHub"
-                width={40}
-                height={40}
-                className="object-cover"
-              />
-            </div>
-          </Link>
-        )}
-        {!collapsed && (
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setCollapsed(!collapsed)}
-            className="shrink-0"
-          >
-            <IconChevronLeft className="h-5 w-5" />
-          </Button>
-        )}
+          }
+          appearance={{
+            elements: {
+              rootBox: '!w-full',
+              organizationSwitcherTrigger:
+                '!flex-1 w-full bg-muted !justify-between hover:bg-accent rounded-lg text-sm' +
+                (collapsed ? '!p-0' : '!px-3 !py-2.5'),
+              organizationPreview__organizationSwitcherTrigger: collapsed
+                ? '!gap-0 !flex-1 !max-w-none !w-full'
+                : '',
+              organizationPreviewTextContainer__organizationSwitcherTrigger:
+                collapsed ? '!hidden' : '',
+              organizationSwitcherPopoverFooter: '!hidden',
+              organizationSwitcherPreviewButton__organization: '!p-3',
+              organizationSwitcherPreviewButton: '!p-0 !pr-3',
+              organizationSwitcherPopoverActionButton__createOrganization:
+                '!p-3',
+              organizationPreview__organizationSwitcherActiveOrganization:
+                '!p-3',
+              organizationSwitcherPopoverCard: '!rounded-sm !max-w-[350px]',
+              organizationPreviewAvatarBox: 'size-7!',
+              organizationSwitcherTriggerIcon: collapsed ? '!hidden' : '',
+            },
+          }}
+          afterCreateOrganizationUrl="/dashboard"
+          afterLeaveOrganizationUrl="/dashboard"
+          afterSelectOrganizationUrl="/dashboard"
+          hidePersonal
+        />
       </div>
 
-      {/* Toggle button when collapsed */}
-      {collapsed && (
-        <div className="px-3 py-2">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setCollapsed(!collapsed)}
-            className="w-full"
-          >
-            <IconChevronRight className="h-5 w-5" />
-          </Button>
-        </div>
-      )}
-
       {/* Main Navigation */}
-      <div
-        className={cn(
-          'flex-1 px-3 pb-4 overflow-y-auto overflow-x-hidden',
-          collapsed ? 'pt-0' : 'pt-4',
-        )}
-      >
+      <div className={cn('flex-1 px-3 py-4 overflow-y-auto overflow-x-hidden')}>
         <div
           className={cn(
             'text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 transition-all duration-300',
@@ -250,26 +227,20 @@ export function Sidebar() {
       </div>
 
       {/* Footer */}
-      <div className="p-4 border-t border-border overflow-hidden">
+      <div className="p-4 border-t border-border relative">
         {!collapsed ? (
-          <div
-            className={cn(
-              'space-y-3 transition-all duration-300',
-              collapsed ? 'opacity-0' : 'opacity-100',
-            )}
-          >
+          <div className="space-y-3 transition-all duration-300">
             {/* Quick Stats */}
             <div className="bg-accent rounded-lg p-3 border border-border">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-muted-foreground font-medium whitespace-nowrap">
                   <TranslateText value="nav.activeUsers" />
                 </span>
-                <span className="font-bold text-primary whitespace-nowrap">
+                <span className="font-bold text-green-500 whitespace-nowrap">
                   24 online
                 </span>
               </div>
             </div>
-
             {/* Version */}
             <div className="text-xs text-muted-foreground text-center">
               CollabHub v1.0.0
@@ -280,6 +251,21 @@ export function Sidebar() {
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           </div>
         )}
+
+        {/* Collapse/Expand Button at bottom right */}
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setCollapsed(!collapsed)}
+          className={cn('absolute bottom-[84px] -right-4 transition-all')}
+          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+        >
+          {collapsed ? (
+            <IconChevronRight className="h-5 w-5" />
+          ) : (
+            <IconChevronRight className="h-5 w-5 rotate-180" />
+          )}
+        </Button>
       </div>
     </div>
   );
