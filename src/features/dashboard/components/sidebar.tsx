@@ -158,11 +158,11 @@ export function Sidebar() {
           fallback={
             <div
               className={cn(
-                'flex items-center gap-2 w-full px-3 py-2.5 rounded-lg bg-muted',
-                collapsed ? 'justify-center p-2.5' : '',
+                'flex items-center gap-2 w-full p-2 rounded-lg bg-muted',
+                collapsed ? 'justify-center' : '',
               )}
             >
-              <Skeleton className="w-7 h-7 rounded bg-gray-500" />
+              <Skeleton className="size-8 rounded bg-gray-500" />
               {!collapsed && <Skeleton className="h-4 w-32 rounded" />}
             </div>
           }
@@ -171,10 +171,12 @@ export function Sidebar() {
               rootBox: '!w-full',
               organizationSwitcherTrigger:
                 '!flex-1 w-full bg-muted !justify-between hover:bg-accent rounded-lg text-sm' +
-                (collapsed ? '!p-0' : '!px-3 !py-2.5'),
+                (collapsed ? '!p-0' : '!px-3 !py-2'),
               organizationPreview__organizationSwitcherTrigger: collapsed
                 ? '!gap-0 !flex-1 !max-w-none !w-full'
                 : '',
+              organizationPreviewAvatarContainer__organizationSwitcherTrigger:
+                '!size-8',
               organizationPreviewTextContainer__organizationSwitcherTrigger:
                 collapsed ? '!hidden' : '',
               organizationSwitcherPopoverFooter: '!hidden',
@@ -185,7 +187,7 @@ export function Sidebar() {
               organizationPreview__organizationSwitcherActiveOrganization:
                 '!p-3',
               organizationSwitcherPopoverCard: '!rounded-sm !max-w-[350px]',
-              organizationPreviewAvatarBox: 'size-7!',
+              organizationPreviewAvatarBox: 'size-8!',
               organizationSwitcherTriggerIcon: collapsed ? '!hidden' : '',
             },
           }}

@@ -1,0 +1,10 @@
+{
+  "whiteboard": {
+    "empty": {
+      "title": "No boards yet",
+      "description": "Create your first board to start collaborating."
+    },
+    "createBoard": "Create board",
+    "title": "Whiteboard in your organization"
+  }
+}

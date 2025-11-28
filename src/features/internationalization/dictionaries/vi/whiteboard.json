@@ -1,0 +1,10 @@
+{
+  "whiteboard": {
+    "empty": {
+      "title": "Chưa có bảng nào",
+      "description": "Tạo bảng đầu tiên của bạn để bắt đầu cộng tác."
+    },
+    "createBoard": "Tạo bảng",
+    "title": "Bảng vẽ trong tổ chức của bạn"
+  }
+}

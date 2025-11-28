@@ -6,6 +6,8 @@ import landing from './landing.json';
 import notifications from './notifications.json';
 import settings from './settings.json';
 import workspaces from './workspaces.json';
+import org from './org.json';
+import whiteboard from './whiteboard.json';
 
 const en = {
   ...common,
@@ -16,6 +18,8 @@ const en = {
   ...settings,
   ...notifications,
   ...workspaces,
+  ...org,
+  ...whiteboard
 };
 
 export default en;

@@ -20,4 +20,8 @@ export type ModalType =
   | 'REMOVE_MEMBER'
   | 'ADD_EMAIL'
   | 'REMOVE_EMAIL'
-  | 'UPDATE_EMAIL';
+  | 'UPDATE_EMAIL'
+  | 'ADD_ORG'
+  | 'VIEW_ORG';
+
+export type ViewType = 'GRID' | 'LIST';

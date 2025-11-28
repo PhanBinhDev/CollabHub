@@ -1,13 +1,15 @@
-import CreateOrgBtn from '@/components/shared/org/create-org';
-import ListOrgs from '@/components/shared/org/list';
+'use client';
+import BoardList from '@/features/whiteboard/components/board-list';
+import { useOrganization } from '@clerk/nextjs';
 
 const WhiteBoardPage = () => {
-  return (
-    <div>
-      <CreateOrgBtn />
-      <ListOrgs />
-    </div>
-  );
+  const { organization } = useOrganization();
+
+  if (!organization) {
+    return <>Empty</>;
+  }
+
+  return <BoardList orgId={organization?.id} />;
 };
 
 export default WhiteBoardPage;
