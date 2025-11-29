@@ -5,6 +5,8 @@
       "description": "Tạo bảng đầu tiên của bạn để bắt đầu cộng tác."
     },
     "createBoard": "Tạo bảng",
-    "title": "Bảng vẽ trong tổ chức của bạn"
+    "boardCreatedSuccessfully": "Tạo bảng thành công",
+    "boardCreationFailed": "Tạo bảng thất bại",
+    "title": "Bảng vẽ nhóm"
   }
 }

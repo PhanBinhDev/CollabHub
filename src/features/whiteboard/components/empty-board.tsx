@@ -10,9 +10,21 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from '@/components/ui/empty';
+import { api } from '@/convex/_generated/api';
+import { useOrganization } from '@clerk/nextjs';
 import { IconBackground, IconPlus } from '@tabler/icons-react';
+import { useMutation } from 'convex/react';
 
 const EmptyBoard = () => {
+  const create = useMutation(api.boards.create);
+  const { organization } = useOrganization();
+
+  const onClick = () => {
+    if (!organization) return;
+
+    create({ title: 'New Board', orgId: organization?.id });
+  };
+
   return (
     <Empty>
       <EmptyHeader>
@@ -27,7 +39,7 @@ const EmptyBoard = () => {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button>
+        <Button onClick={onClick}>
           <IconPlus className="mr-1 h-4 w-4" />
           <TranslateText value="whiteboard.createBoard" />
         </Button>

@@ -56,6 +56,10 @@
       "newest": "Newest",
       "oldest": "Oldest"
     },
+    "view": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
     "description": "Description",
     "noDescription": "No description provided"
   }

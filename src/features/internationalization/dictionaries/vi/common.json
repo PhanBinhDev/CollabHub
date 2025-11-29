@@ -60,6 +60,10 @@
       "newest": "Mới nhất",
       "oldest": "Cũ nhất"
     },
+    "view": {
+      "grid": "Chế độ lưới",
+      "list": "Chế độ danh sách"
+    },
     "description": "Mô tả",
     "noDescription": "Chưa có mô tả"
   }

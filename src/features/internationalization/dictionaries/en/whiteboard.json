@@ -5,6 +5,8 @@
       "description": "Create your first board to start collaborating."
     },
     "createBoard": "Create board",
-    "title": "Whiteboard in your organization"
+    "boardCreatedSuccessfully": "Board created successfully",
+    "boardCreationFailed": "Failed to create board",
+    "title": "Team Whiteboards"
   }
 }
