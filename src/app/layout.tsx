@@ -47,10 +47,11 @@ export default async function RootLayout({ children }: Readonly<IChildren>) {
             main: '!gap-2',
             modalCloseButton: 'focus:!shadow-none',
             modalBackdrop: '!items-center',
-            formButtonPrimary: '!bg-linear-to-r from-blue-600 to-purple-600 !hover:from-blue-700 !hover:to-purple-700 !text-white !rounded-md !hover:shadow-lg !transition-all !shadow-sm !py-2',
+            formButtonPrimary:
+              '!bg-linear-to-r from-blue-600 to-purple-600 !hover:from-blue-700 !hover:to-purple-700 !text-white !rounded-md !hover:shadow-lg !transition-all !shadow-sm !py-2',
             formFieldInput: '!rounded-md !py-2',
             socialButtonsIconButton: '!rounded-md !py-2',
-            form: '!gap-3'
+            form: '!gap-3',
           },
         }}
         signInFallbackRedirectUrl={process.env.NEXT_PUBLIC_SIGN_IN_REDIRECT_URL}

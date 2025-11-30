@@ -3,49 +3,95 @@
 import TranslateText from '@/components/shared/translate/translate-text';
 import { Button } from '@/components/ui/button';
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { api } from '@/convex/_generated/api';
 import { useClientDictionary } from '@/features/internationalization/dictionary-provider';
-import { DictKey } from '@/features/internationalization/get-dictionaries';
 import { useApiMutation } from '@/hooks/use-api-mutation';
-import { cn } from '@/lib/utils';
-import { ViewType } from '@/types';
+import { FilterOption, SortOption, ViewOption, ViewType } from '@/types';
 import { useOrganization } from '@clerk/nextjs';
-import {
-  IconGridDots,
-  IconList,
-  IconPlus,
-  TablerIcon,
-} from '@tabler/icons-react';
-import { Dispatch, SetStateAction } from 'react';
+import { IconGridDots, IconList, IconPlus } from '@tabler/icons-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import qs from 'query-string';
+import { Dispatch, SetStateAction, useCallback, useMemo } from 'react';
 import { toast } from 'sonner';
 
 interface HeaderBoardListProps {
   view?: ViewType;
   setView?: Dispatch<SetStateAction<ViewType>>;
-  showFilter?: boolean;
 }
 
-const viewOptions: {
-  type: ViewType;
-  icon: TablerIcon;
-  label: DictKey;
-}[] = [
+const viewOptions: ViewOption[] = [
   { type: 'GRID', icon: IconGridDots, label: 'common.view.grid' },
   { type: 'LIST', icon: IconList, label: 'common.view.list' },
 ];
 
-export const HeaderBoardList = ({
-  view,
-  setView,
-  showFilter,
-}: HeaderBoardListProps) => {
+const filterOptions: FilterOption[] = [
+  { label: 'whiteboard.filter.ownerByAnyone', value: 'anyone' },
+  { label: 'whiteboard.filter.ownerByMe', value: 'ownerByMe' },
+  { label: 'whiteboard.filter.notOwnerByMe', value: 'notOwnerByMe' },
+  { label: 'whiteboard.filter.starredBoards', value: 'starred' },
+  { label: 'whiteboard.filter.sharedBoards', value: 'shared' },
+];
+
+const sortOptions: SortOption[] = [
+  { label: 'whiteboard.sort.lastModified', value: 'lastModified' },
+  { label: 'whiteboard.sort.lastOpened', value: 'lastOpened' },
+  { label: 'whiteboard.sort.createdAt', value: 'createdAt' },
+  { label: 'whiteboard.sort.nameAsc', value: 'nameAsc' },
+  { label: 'whiteboard.sort.nameDesc', value: 'nameDesc' },
+];
+
+export const HeaderBoardList = ({ view, setView }: HeaderBoardListProps) => {
   const { mutate, pending } = useApiMutation(api.boards.create);
   const { organization } = useOrganization();
   const { dict } = useClientDictionary();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const currentQuery = useMemo(
+    () => qs.parse(searchParams.toString()),
+    [searchParams],
+  );
+
+  const filterValue = (currentQuery.filter as string) || filterOptions[0].value;
+  const sortValue = (currentQuery.sort as string) || sortOptions[0].value;
+
+  const updateQueryParams = useCallback(
+    (updates: Record<string, string>) => {
+      const newQuery = qs.stringify(
+        { ...currentQuery, ...updates },
+        { skipNull: true, skipEmptyString: true },
+      );
+      router.replace(`${window.location.pathname}?${newQuery}`, {
+        scroll: false,
+      });
+    },
+    [currentQuery, router],
+  );
+
+  const handleFilterChange = useCallback(
+    (value: string) => {
+      updateQueryParams({ filter: value });
+    },
+    [updateQueryParams],
+  );
+
+  const handleSortChange = useCallback(
+    (value: string) => {
+      updateQueryParams({ sort: value });
+    },
+    [updateQueryParams],
+  );
 
   const onClick = () => {
     if (!organization) return;
@@ -61,7 +107,7 @@ export const HeaderBoardList = ({
   };
 
   return (
-    <div className={cn('flex flex-col w-full p-3', showFilter && 'gap-3')}>
+    <div className="flex flex-col w-full p-3 gap-3">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">
           <TranslateText value="whiteboard.title" />
@@ -74,9 +120,44 @@ export const HeaderBoardList = ({
       </div>
 
       <div className="flex items-center justify-between">
-        {/* Left: filter */}
+        <div className="flex items-center gap-2" role="group">
+          <h3 className="text-sm font-medium">
+            <TranslateText value="common.filter.filterBy" />
+          </h3>
+          <Select onValueChange={handleFilterChange} value={filterValue}>
+            <SelectTrigger className="w-[180px] outline-none">
+              <SelectValue
+                placeholder={<TranslateText value="whiteboard.filter.title" />}
+              />
+            </SelectTrigger>
+            <SelectContent align="end">
+              {filterOptions.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  <TranslateText value={option.label} />
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-        {/* Right: set view */}
+          <h3 className="text-sm font-medium">
+            <TranslateText value="common.sort.sortBy" />
+          </h3>
+          <Select onValueChange={handleSortChange} value={sortValue}>
+            <SelectTrigger className="w-[140px] outline-none">
+              <SelectValue
+                placeholder={<TranslateText value="whiteboard.sort.title" />}
+              />
+            </SelectTrigger>
+            <SelectContent align="end">
+              {sortOptions.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  <TranslateText value={option.label} />
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
         <div className="flex items-center gap-2 ml-auto">
           {viewOptions.map(opt => (
             <Tooltip key={opt.type}>
@@ -91,7 +172,7 @@ export const HeaderBoardList = ({
                   <opt.icon className="h-5 w-5" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>
+              <TooltipContent side="bottom">
                 <TranslateText value={opt.label} />
               </TooltipContent>
             </Tooltip>

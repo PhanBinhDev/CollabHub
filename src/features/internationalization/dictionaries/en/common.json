@@ -54,11 +54,15 @@
     "new": "New",
     "sort": {
       "newest": "Newest",
-      "oldest": "Oldest"
+      "oldest": "Oldest",
+      "sortBy": "Sort by"
     },
     "view": {
       "grid": "Grid view",
       "list": "List view"
+    },
+    "filter": {
+      "filterBy": "Filter by"
     },
     "description": "Description",
     "noDescription": "No description provided"

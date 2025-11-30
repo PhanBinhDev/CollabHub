@@ -5,7 +5,7 @@ import { internal } from './_generated/api';
 import { httpAction } from './_generated/server';
 import { auth } from './auth';
 
-function ensureEnvironmentVariable(name: string): string {
+export function ensureEnvironmentVariable(name: string): string {
   const value = process.env[name];
   if (value === undefined) {
     throw new Error(`missing environment variable ${name}`);

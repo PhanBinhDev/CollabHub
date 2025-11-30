@@ -11,12 +11,12 @@ import {
   EmptyTitle,
 } from '@/components/ui/empty';
 import { api } from '@/convex/_generated/api';
+import { useApiMutation } from '@/hooks/use-api-mutation';
 import { useOrganization } from '@clerk/nextjs';
 import { IconBackground, IconPlus } from '@tabler/icons-react';
-import { useMutation } from 'convex/react';
 
 const EmptyBoard = () => {
-  const create = useMutation(api.boards.create);
+  const { mutate: create, pending } = useApiMutation(api.boards.create);
   const { organization } = useOrganization();
 
   const onClick = () => {
@@ -39,8 +39,8 @@ const EmptyBoard = () => {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button onClick={onClick}>
-          <IconPlus className="mr-1 h-4 w-4" />
+        <Button onClick={onClick} disabled={pending} loading={pending}>
+          {!pending && <IconPlus className="mr-1 h-4 w-4" />}
           <TranslateText value="whiteboard.createBoard" />
         </Button>
       </EmptyContent>

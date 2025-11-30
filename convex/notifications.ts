@@ -28,7 +28,7 @@ export const NotificationFilter = v.union(
 export type NotificationType = typeof NotificationType.type;
 export type NotificationFilter = typeof NotificationFilter.type;
 
-export const notificationsTable = defineTable({
+export const notifications = defineTable({
   userId: v.id('users'),
   type: NotificationType,
   title: v.string(),

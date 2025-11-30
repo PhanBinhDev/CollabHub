@@ -1,17 +1,25 @@
 import { defineSchema } from 'convex/server';
-import { boards } from './boards';
+import {
+  boardMembers,
+  boards,
+  boardShareLinks,
+  userBoardFavorites,
+} from './boards';
 import { emailVerifications } from './emails';
-import { notificationsTable } from './notifications';
+import { notifications } from './notifications';
 import { pendingSessions } from './sessions';
-import { userSettingsTable, usersTable } from './users';
+import { users, userSettings } from './users';
 
 const schema = defineSchema({
-  users: usersTable,
-  notifications: notificationsTable,
-  userSettings: userSettingsTable,
+  users,
+  notifications,
+  userSettings,
   pendingSessions,
   emailVerifications,
   boards,
+  userBoardFavorites,
+  boardMembers,
+  boardShareLinks,
 });
 
 export default schema;

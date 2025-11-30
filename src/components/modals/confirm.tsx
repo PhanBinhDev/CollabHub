@@ -8,11 +8,11 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { DictKey } from '@/features/internationalization/get-dictionaries';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -28,6 +28,7 @@ interface ConfirmDialogProps {
     label?: DictKey;
     placeholder?: DictKey;
   };
+  loading?: boolean;
 }
 
 export function ConfirmDialog({
@@ -40,12 +41,12 @@ export function ConfirmDialog({
   cancelText = 'common.cancel',
   variant = 'default',
   requireConfirmation,
+  loading,
 }: ConfirmDialogProps) {
   const [confirmationInput, setConfirmationInput] = useState('');
 
   const handleConfirm = () => {
     onConfirm();
-    onOpenChange(false);
     setConfirmationInput('');
   };
 
@@ -101,6 +102,7 @@ export function ConfirmDialog({
             onClick={handleConfirm}
             variant={variant}
             disabled={!isConfirmEnabled}
+            loading={loading}
           >
             <TranslateText value={confirmText} />
           </Button>

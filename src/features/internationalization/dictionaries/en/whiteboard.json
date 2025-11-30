@@ -1,12 +1,83 @@
 {
   "whiteboard": {
+    "info": {
+      "goToDashboard": "Go to dashboard"
+    },
     "empty": {
       "title": "No boards yet",
-      "description": "Create your first board to start collaborating."
+      "description": "Create your first board to start collaborating.",
+      "noResultTitle": "No results found",
+      "noResultDesc": "No boards match your filters.",
+      "tryChangeFilter": "Try changing filters or create a new board.",
+      "clearFilters": "Clear filters"
     },
     "createBoard": "Create board",
     "boardCreatedSuccessfully": "Board created successfully",
     "boardCreationFailed": "Failed to create board",
-    "title": "Team Whiteboards"
+    "title": "Team Whiteboards",
+    "boardCard": {
+      "members": "{count, plural, =0 {No members} one {# member} other {# members}}",
+      "lastUpdated": "Last updated {date}",
+      "options": {
+        "shared": "Shared",
+        "copyLink": "Copy link",
+        "openNewTab": "Open in new tab",
+        "starThisBoard": "Star this board",
+        "unstarThisBoard": "Unstar this board",
+        "renameBoard": "Rename board",
+        "duplicateBoard": "Duplicate board",
+        "deleteBoard": "Delete board",
+        "changeThumbnail": "Change thumbnail",
+        "boardDetails": "Board details",
+        "makePrivate": "Make private",
+        "makeShared": "Make shared",
+        "moveToTeam": "Move to team",
+        "leaveBoard": "Leave board"
+      },
+      "starSuccess": "Board starred successfully",
+      "unstarSuccess": "Board unstarred successfully",
+      "favoriteError": "An error occurred while starring",
+      "linkCopied": "Link copied",
+      "removeBoard": {
+        "title": "Remove board",
+        "desc": "Are you sure you want to remove this board? This action cannot be undone.",
+        "confirmText": "Yes, remove board",
+        "confirmDelete": "Are you sure you want to delete this board?",
+        "deleteSuccess": "Board deleted successfully",
+        "deleteError": "Failed to delete board"
+      },
+      "update": {
+        "updateTitleTitle": "Update board name",
+        "updateTitleDesc": "Enter the new board name below.",
+        "updateTitlePlaceholder": "Board name",
+        "updateTitleErrorRequired": "Board name is required",
+        "updateTitleSuccess": "Board name updated successfully",
+        "updateTitleError": "Failed to update board name"
+      },
+      "visibility": {
+        "title": "Visibility",
+        "organization": "Organization",
+        "private": "Private",
+        "public": "Public",
+        "visibilityUpdated": "Board visibility updated successfully",
+        "visibilityUpdateError": "Failed to update board visibility"
+      }
+    },
+    "filter": {
+      "title": "Filter boards",
+      "ownerByAnyone": "Owner by anyone",
+      "ownerByMe": "Owner by me",
+      "notOwnerByMe": "Not owner by me",
+      "starredBoards": "Starred boards",
+      "sharedBoards": "Shared boards"
+    },
+    "sort": {
+      "title": "Sort boards",
+      "lastModified": "Last modified",
+      "lastOpened": "Last opened",
+      "createdAt": "Created at",
+      "nameAsc": "Name A-Z",
+      "nameDesc": "Name Z-A"
+    }
   }
 }

@@ -58,11 +58,15 @@
     "new": "Mới",
     "sort": {
       "newest": "Mới nhất",
-      "oldest": "Cũ nhất"
+      "oldest": "Cũ nhất",
+      "sortBy": "Sắp xếp theo"
     },
     "view": {
       "grid": "Chế độ lưới",
       "list": "Chế độ danh sách"
+    },
+    "filter": {
+      "filterBy": "Lọc theo"
     },
     "description": "Mô tả",
     "noDescription": "Chưa có mô tả"

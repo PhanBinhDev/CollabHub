@@ -9,9 +9,9 @@ export const UserStatus = v.union(
   v.literal('away'),
   v.literal('busy'),
   v.literal('offline'),
-)
+);
 
-export const usersTable = defineTable({
+export const users = defineTable({
   clerkId: v.string(),
   email: v.string(),
   username: v.string(),
@@ -25,7 +25,7 @@ export const usersTable = defineTable({
   statusMessage: v.optional(v.string()),
 }).index('by_clerk_id', ['clerkId']);
 
-export const userSettingsTable = defineTable({
+export const userSettings = defineTable({
   userId: v.id('users'),
   emailNotifications: v.object({
     newWorkspace: v.boolean(),
@@ -43,6 +43,7 @@ export const userSettingsTable = defineTable({
   inAppNotifications: v.object({
     enableAll: v.boolean(),
   }),
+  completedOnboarding: v.boolean(),
   language: v.string(),
   timezone: v.string(),
   dateFormat: v.string(),
@@ -73,8 +74,10 @@ export const upsertFromClerk = internalMutation({
       .withIndex('by_clerk_id', q => q.eq('clerkId', data.id))
       .first();
 
-    const primaryEmail = data.email_addresses?.find((e: any) => e.id === data.primary_email_address_id);
-    
+    const primaryEmail = data.email_addresses?.find(
+      (e: any) => e.id === data.primary_email_address_id,
+    );
+
     const userData = {
       clerkId: data.id,
       email: primaryEmail?.email_address ?? '',
@@ -107,6 +110,7 @@ export const upsertFromClerk = internalMutation({
         inAppNotifications: {
           enableAll: true,
         },
+        completedOnboarding: false,
         language: 'en',
         timezone: 'UTC+7',
         dateFormat: 'dd/mm/yyyy',
@@ -143,7 +147,8 @@ export const updateUser = mutation({
     if (args.bio !== undefined) updates.bio = args.bio;
     if (args.phone !== undefined) updates.phone = args.phone;
     if (args.status !== undefined) updates.status = args.status;
-    if (args.statusMessage !== undefined) updates.statusMessage = args.statusMessage;
+    if (args.statusMessage !== undefined)
+      updates.statusMessage = args.statusMessage;
     if (args.imageUrl !== undefined) updates.imageUrl = args.imageUrl;
 
     await ctx.db.patch(user._id, updates);
@@ -306,6 +311,32 @@ export const updateLanguageSettings = mutation({
     if (args.timeFormat) updates.timeFormat = args.timeFormat;
 
     await ctx.db.patch(settings._id, updates);
+
+    return { success: true };
+  },
+});
+
+export const completeOnboarding = mutation({
+  args: {},
+  handler: async ctx => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) throw new Error('Unauthorized');
+
+    const user = await ctx.db
+      .query('users')
+      .withIndex('by_clerk_id', q => q.eq('clerkId', userId))
+      .first();
+
+    if (!user) throw new Error('User not found');
+
+    const settings = await ctx.db
+      .query('userSettings')
+      .withIndex('by_user', q => q.eq('userId', user._id))
+      .first();
+
+    if (!settings) throw new Error('Settings not found');
+
+    await ctx.db.patch(settings._id, { completedOnboarding: true });
 
     return { success: true };
   },

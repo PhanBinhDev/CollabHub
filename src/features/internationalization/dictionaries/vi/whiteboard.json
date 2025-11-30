@@ -1,12 +1,83 @@
 {
   "whiteboard": {
+    "info": {
+      "goToDashboard": "Đi đến bảng điều khiển"
+    },
     "empty": {
       "title": "Chưa có bảng nào",
-      "description": "Tạo bảng đầu tiên của bạn để bắt đầu cộng tác."
+      "description": "Tạo bảng đầu tiên của bạn để bắt đầu cộng tác.",
+      "noResultTitle": "Không tìm thấy kết quả",
+      "noResultDesc": "Không có board nào phù hợp với bộ lọc của bạn.",
+      "tryChangeFilter": "Thử thay đổi bộ lọc hoặc tạo board mới.",
+      "clearFilters": "Xóa bộ lọc"
     },
     "createBoard": "Tạo bảng",
     "boardCreatedSuccessfully": "Tạo bảng thành công",
     "boardCreationFailed": "Tạo bảng thất bại",
-    "title": "Bảng vẽ nhóm"
+    "title": "Bảng vẽ nhóm",
+    "boardCard": {
+      "members": "{count, plural, =0 {Không có thành viên} one {# thành viên} other {# thành viên}}",
+      "lastUpdated": "Cập nhật lần cuối {date}",
+      "options": {
+        "shared": "Chia sẻ",
+        "copyLink": "Sao chép liên kết",
+        "openNewTab": "Mở trong tab mới",
+        "starThisBoard": "Đánh dấu bảng này",
+        "unstarThisBoard": "Bỏ đánh dấu bảng này",
+        "renameBoard": "Đổi tên bảng",
+        "duplicateBoard": "Sao chép bảng",
+        "deleteBoard": "Xóa bảng",
+        "changeThumbnail": "Thay đổi hình thu nhỏ",
+        "boardDetails": "Chi tiết bảng",
+        "makePrivate": "Đặt riêng tư",
+        "makeShared": "Đặt chia sẻ",
+        "moveToTeam": "Chuyển đến nhóm",
+        "leaveBoard": "Rời khỏi bảng"
+      },
+      "starSuccess": "Đã đánh dấu bảng",
+      "unstarSuccess": "Đã bỏ đánh dấu bảng",
+      "favoriteError": "Có lỗi xảy ra khi đánh dấu",
+      "linkCopied": "Đã sao chép liên kết",
+      "removeBoard": {
+        "title": "Xóa bảng",
+        "desc": "Bạn có chắc muốn xóa bảng này không? Hành động này không thể hoàn tác.",
+        "confirmText": "Có, xóa bảng",
+        "confirmDelete": "Bạn có chắc muốn xóa bảng này?",
+        "deleteSuccess": "Đã xóa bảng thành công",
+        "deleteError": "Không thể xóa bảng"
+      },
+      "update": {
+        "updateTitleTitle": "Cập nhật tên bảng",
+        "updateTitleDesc": "Nhập tên bảng mới bên dưới.",
+        "updateTitlePlaceholder": "Tên bảng",
+        "updateTitleErrorRequired": "Tên bảng là bắt buộc",
+        "updateTitleSuccess": "Cập nhật tên bảng thành công",
+        "updateTitleError": "Cập nhật tên bảng thất bại"
+      },
+      "visibility": {
+        "title": "Quyền riêng tư",
+        "organization": "Tổ chức",
+        "private": "Riêng tư",
+        "public": "Công khai",
+        "visibilityUpdated": "Cập nhật quyền riêng tư bảng thành công",
+        "visibilityUpdateError": "Cập nhật quyền riêng tư bảng thất bại"
+      }
+    },
+    "filter": {
+      "title": "Lọc bảng",
+      "ownerByAnyone": "Sở hữu bởi bất kỳ ai",
+      "ownerByMe": "Sở hữu bởi tôi",
+      "notOwnerByMe": "Không sở hữu bởi tôi",
+      "starredBoards": "Bảng đã đánh dấu",
+      "sharedBoards": "Bảng chia sẻ"
+    },
+    "sort": {
+      "title": "Sắp xếp bảng",
+      "lastModified": "Lần sửa đổi cuối",
+      "lastOpened": "Lần mở cuối",
+      "createdAt": "Ngày tạo",
+      "nameAsc": "Tên A-Z",
+      "nameDesc": "Tên Z-A"
+    }
   }
 }

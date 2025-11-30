@@ -6,8 +6,10 @@ import { ModalAddEmail } from './modal-add-email';
 import { ModalAddOrg } from './modal-add-org';
 import { ModalRemoveAccount } from './modal-remove-account';
 import { ModalRemoveAvatar } from './modal-remove-avatar';
+import { ModalRemoveBoard } from './modal-remove-board';
 import { ModalRemoveEmail } from './modal-remove-email';
 import { ModalUpdateEmail } from './modal-update-email';
+import { ModalUpdateNameBoard } from './modal-update-name-board';
 import { ModalViewOrg } from './modal-view-org';
 
 const Modals = () => {
@@ -29,6 +31,8 @@ const Modals = () => {
       {isModalOpen('UPDATE_EMAIL') && <ModalUpdateEmail />}
       {isModalOpen('ADD_ORG') && <ModalAddOrg />}
       {isModalOpen('VIEW_ORG') && <ModalViewOrg />}
+      {isModalOpen('REMOVE_BOARD') && <ModalRemoveBoard />}
+      {isModalOpen('UPDATE_NAME_BOARD') && <ModalUpdateNameBoard />}
     </>
   );
 };
