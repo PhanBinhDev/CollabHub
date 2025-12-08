@@ -92,7 +92,9 @@
       "text": "Văn bản",
       "ellipse": "Hình elip",
       "undo": "Hoàn tác",
-      "redo": "Làm lại"
+      "redo": "Làm lại",
+      "bringToFront": "Đưa lên trước",
+      "sendToBack": "Đưa xuống sau"
     }
   }
 }

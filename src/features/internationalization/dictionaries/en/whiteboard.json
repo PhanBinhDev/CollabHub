@@ -92,7 +92,9 @@
       "text": "Text",
       "ellipse": "Ellipse",
       "undo": "Undo",
-      "redo": "Redo"
+      "redo": "Redo",
+      "bringToFront": "Bring to front",
+      "sendToBack": "Send to back"
     }
   }
 }
