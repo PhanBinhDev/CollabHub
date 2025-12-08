@@ -32,12 +32,13 @@ import {
 } from '@liveblocks/react/suspense';
 import { useQuery } from 'convex/react';
 import { nanoid } from 'nanoid';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import CursorsPresence from './cursors-presence';
 import Info from './info';
 import LayerPreview from './layer-preview';
 import Participants from './participants';
 import SelectionBox from './selection-box';
+import SelectionToolbar from './selection-toolbar';
 import Toolbar from './toolbar';
 
 interface CanvasProps {
@@ -128,6 +129,40 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [canvasState],
   );
 
+  const translateLayer = useMutation(
+    ({ storage, self }, point: Point) => {
+      if (canvasState.mode !== CanvasMode.Translating) return;
+
+      const offset = {
+        x: point.x - canvasState.current.x,
+        y: point.y - canvasState.current.y,
+      };
+
+      const liveLayers = storage.get('layers');
+      for (const layerId of self.presence.selection) {
+        const layer = liveLayers.get(layerId);
+        if (layer) {
+          layer.update({
+            x: layer.get('x') + offset.x,
+            y: layer.get('y') + offset.y,
+          });
+        }
+      }
+
+      setCanvasState({
+        mode: CanvasMode.Translating,
+        current: point,
+      });
+    },
+    [canvasState],
+  );
+
+  const unSelectLayer = useMutation(({ self, setMyPresence }) => {
+    if (self.presence.selection.length > 0) {
+      setMyPresence({ selection: [] }, { addToHistory: true });
+    }
+  }, []);
+
   const onResizeHandlePointerDown = useCallback(
     (corner: Side, initialBounds: XYWH) => {
       history.pause();
@@ -153,13 +188,15 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
       const current = pointerEventToCanvasPoint(e, camera);
 
-      if (canvasState.mode === CanvasMode.Resizing) {
+      if (canvasState.mode === CanvasMode.Translating) {
+        translateLayer(current);
+      } else if (canvasState.mode === CanvasMode.Resizing) {
         resizeLayer(current);
       }
 
       setMyPresence({ cursor: current });
     },
-    [canvasState, camera, resizeLayer],
+    [canvasState, camera, resizeLayer, translateLayer],
   );
 
   const onPointerLeave = useMutation(({ setMyPresence }) => {
@@ -170,7 +207,13 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     ({}, e) => {
       const point = pointerEventToCanvasPoint(e, camera);
 
-      if (canvasState.mode === CanvasMode.Inserting) {
+      if (
+        canvasState.mode === CanvasMode.None ||
+        canvasState.mode === CanvasMode.Pressing
+      ) {
+        unSelectLayer();
+        setCanvasState({ mode: CanvasMode.None });
+      } else if (canvasState.mode === CanvasMode.Inserting) {
         insertLayer(canvasState.layerType, point);
       } else {
         setCanvasState({ mode: CanvasMode.None });
@@ -178,7 +221,20 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
       history.resume();
     },
-    [camera, canvasState, history, insertLayer],
+    [camera, canvasState, history, insertLayer, unSelectLayer],
+  );
+
+  const onPointerDown = useCallback(
+    (e: React.PointerEvent) => {
+      const point = pointerEventToCanvasPoint(e, camera);
+
+      if (canvasState.mode === CanvasMode.Inserting) return;
+
+      // TODO: Add case for drawing
+
+      setCanvasState({ mode: CanvasMode.Pressing, origin: point });
+    },
+    [camera, canvasState.mode, setCanvasState],
   );
 
   const selections = useOthersMapped(others => others.presence.selection);
@@ -261,12 +317,14 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         canRedo={canRedo}
         canEdit={board.isOwner || board.userRole === 'editor'}
       />
+      <SelectionToolbar camera={camera} setLastUsedColor={setLastUsedColor} />
       <svg
         className="w-[100vw] h-[100vh]"
         onWheel={onWheel}
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
         onPointerUp={onPointerUp}
+        onPointerDown={onPointerDown}
       >
         <g
           style={{
