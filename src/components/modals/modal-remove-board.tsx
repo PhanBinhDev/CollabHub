@@ -5,12 +5,14 @@ import { Board } from '@/convex/boards';
 import { useClientDictionary } from '@/features/internationalization/dictionary-provider';
 import { useApiMutation } from '@/hooks/use-api-mutation';
 import useModal from '@/hooks/use-modal';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { ConfirmDialog } from './confirm';
 
 export function ModalRemoveBoard() {
   const { isModalOpen, closeModal, getModalData } = useModal();
   const { dict } = useClientDictionary();
+  const router = useRouter();
   const { mutate: deleteBoardMutate, pending } = useApiMutation(
     api.boards.deleteBoard,
   );
@@ -24,6 +26,7 @@ export function ModalRemoveBoard() {
       .then(() => {
         toast.success(dict?.whiteboard.boardCard.removeBoard.deleteSuccess);
         closeModal('REMOVE_BOARD');
+        router.push('/dashboard');
       })
       .catch(() => {
         toast.error(dict?.whiteboard.boardCard.removeBoard.deleteError);

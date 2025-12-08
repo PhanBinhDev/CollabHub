@@ -18,8 +18,12 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        board: 'hover:bg-blue-500/20 hover:text-blue-800',
-        boardActive: 'bg-blue-500/20 text-blue-800',
+        board:
+          'hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-800 hover:shadow-sm transition-all duration-200',
+        boardActive:
+          'bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800',
+        gradient:
+          'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

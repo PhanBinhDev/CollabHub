@@ -1,17 +1,22 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { LOCAL_STORAGE_KEY } from '@/constants/key';
 import { SignInButton } from '@clerk/nextjs';
 import { Authenticated, Unauthenticated } from 'convex/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useReadLocalStorage } from 'usehooks-ts';
 import { ChangeLanguage } from './change-language';
 import TranslateText from './translate/translate-text';
 import { UserMenu } from './user-menu';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const redirectUrl = useReadLocalStorage<string>(
+    LOCAL_STORAGE_KEY.REDIRECT_URL,
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,8 +88,8 @@ export default function Header() {
           <ChangeLanguage />
 
           <Unauthenticated>
-            <SignInButton mode="modal">
-              <Button className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all rounded-xl">
+            <SignInButton mode="modal" fallbackRedirectUrl={redirectUrl}>
+              <Button variant="gradient" className="rounded-xl">
                 <TranslateText value="nav.getStarted" />
               </Button>
             </SignInButton>
@@ -98,11 +103,8 @@ export default function Header() {
         <div className="flex md:hidden items-center gap-1.5">
           <ChangeLanguage />
           <Unauthenticated>
-            <SignInButton mode="modal">
-              <Button
-                size="sm"
-                className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl hover:shadow-lg transition-all shadow-sm"
-              >
+            <SignInButton mode="modal" fallbackRedirectUrl={redirectUrl}>
+              <Button size="sm" variant="gradient">
                 <TranslateText value="nav.getStarted" />
               </Button>
             </SignInButton>

@@ -16,6 +16,7 @@ import { useQuery } from 'convex/react';
 import { Poppins } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
+import BoardCardAction from './board-card-action';
 
 const font = Poppins({ subsets: ['latin'], weight: ['600'] });
 
@@ -30,6 +31,8 @@ const Info = ({ boardId }: InfoProps) => {
   if (!data) {
     return <Info.Skeleton />;
   }
+
+  const canRename = data.isOwner || data.userRole === 'editor';
 
   return (
     <div className="absolute top-2 left-2 py-2 bg-white rounded-md px-1.5 h-12 flex gap-2 items-center shadow-md">
@@ -61,13 +64,32 @@ const Info = ({ boardId }: InfoProps) => {
         </TooltipContent>
       </Tooltip>
       <Separator orientation="vertical" className="py-2" />
-      <Button
-        variant={'board'}
-        className="text-base font-normal px-2"
-        onClick={() => openModal('UPDATE_NAME_BOARD', { board: data })}
-      >
-        {data.title}
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant={'board'}
+            className="text-base font-normal px-2"
+            disabled={!canRename}
+            onClick={() => openModal('UPDATE_NAME_BOARD', { board: data })}
+          >
+            {data.title}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="bottom">
+          <TranslateText value="whiteboard.info.editBoardName" />
+        </TooltipContent>
+      </Tooltip>
+
+      <div className="relative">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <BoardCardAction board={data} isFavorite={data.isFavorite} />
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            <TranslateText value="whiteboard.info.editBoardName" />
+          </TooltipContent>
+        </Tooltip>
+      </div>
     </div>
   );
 };

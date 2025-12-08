@@ -26,7 +26,8 @@ export type ModalType =
   | 'VIEW_ORG'
   | 'REMOVE_BOARD'
   | 'UPDATE_NAME_BOARD'
-  | 'UPDATE_THUMBNAIL_BOARD';
+  | 'UPDATE_THUMBNAIL_BOARD'
+  | 'ONBOARDING';
 
 export type ViewType = 'GRID' | 'LIST';
 

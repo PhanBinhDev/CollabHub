@@ -24,9 +24,7 @@
     "realtimeWorkspace": "Realtime Workspace",
     "activeUsers": "Active Users"
   },
-  "notifications": {
-    
-  },
+  "notifications": {},
   "common": {
     "changeLanguage": "Change language",
     "loading": "Loading...",
@@ -51,6 +49,7 @@
     "refreshSuccess": "Refreshed successfully",
     "refreshError": "Error refreshing data",
     "somethingWrong": "Something went wrong. Please try again.",
+    "somethingWentWrong": "Oops! Something went wrong",
     "new": "New",
     "sort": {
       "newest": "Newest",
@@ -65,6 +64,12 @@
       "filterBy": "Filter by"
     },
     "description": "Description",
-    "noDescription": "No description provided"
+    "noDescription": "No description provided",
+    "more": "more",
+    "artist": "Artist by ",
+    "goBack": "Go Back",
+    "goHome": "Go to Dashboard",
+    "needHelp": "Need help?",
+    "contactSupport": "Contact Support"
   }
 }

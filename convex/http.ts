@@ -52,7 +52,7 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
 
     case 'session.revoked': {
       console.log('Clerk webhook event:', event.type, event.data);
-      
+
       if (event.data.id) {
         await ctx.runMutation(internal.sessions.markSessionRevoked, {
           sessionId: event.data.id,
@@ -60,6 +60,22 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
         console.log(`Session ${event.data.id} marked as revoked`);
       }
 
+      break;
+    }
+
+    case 'organization.deleted': {
+      const orgId = event.data.id;
+
+      if (!orgId) {
+        console.log('Organization ID missing in deleted event');
+        break;
+      }
+
+      await ctx.runMutation(internal.boards.deleteBoardsByOrg, {
+        orgId,
+      });
+
+      console.log(`All boards for org ${orgId} deleted`);
       break;
     }
 

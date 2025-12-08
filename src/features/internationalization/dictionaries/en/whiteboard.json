@@ -1,7 +1,8 @@
 {
   "whiteboard": {
     "info": {
-      "goToDashboard": "Go to dashboard"
+      "goToDashboard": "Go to dashboard",
+      "editBoardName": "Edit board name"
     },
     "empty": {
       "title": "No boards yet",
@@ -11,6 +12,9 @@
       "tryChangeFilter": "Try changing filters or create a new board.",
       "clearFilters": "Clear filters"
     },
+    "you": "You",
+    "signInToAccessBoard": "Please sign in to access this board",
+    "accessDenied": "Access denied",
     "createBoard": "Create board",
     "boardCreatedSuccessfully": "Board created successfully",
     "boardCreationFailed": "Failed to create board",
@@ -78,6 +82,17 @@
       "createdAt": "Created at",
       "nameAsc": "Name A-Z",
       "nameDesc": "Name Z-A"
+    },
+    "toolbar": {
+      "pointer": "Pointer",
+      "pen": "Pen",
+      "typography": "Typography",
+      "stickyNote": "Sticky Note",
+      "rectangle": "Rectangle",
+      "text": "Text",
+      "ellipse": "Ellipse",
+      "undo": "Undo",
+      "redo": "Redo"
     }
   }
 }

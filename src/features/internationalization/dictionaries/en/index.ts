@@ -8,6 +8,7 @@ import settings from './settings.json';
 import workspaces from './workspaces.json';
 import org from './org.json';
 import whiteboard from './whiteboard.json';
+import onboarding from './onboarding.json';
 
 const en = {
   ...common,
@@ -19,7 +20,8 @@ const en = {
   ...notifications,
   ...workspaces,
   ...org,
-  ...whiteboard
+  ...whiteboard,
+  ...onboarding,
 };
 
 export default en;

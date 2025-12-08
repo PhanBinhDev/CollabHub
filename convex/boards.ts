@@ -1,7 +1,8 @@
 import { defineTable } from 'convex/server';
 import { v } from 'convex/values';
+import { api } from './_generated/api';
 import { Doc } from './_generated/dataModel';
-import { mutation, query } from './_generated/server';
+import { internalMutation, mutation, query } from './_generated/server';
 
 const images: string[] = [
   'https://source.unsplash.com/featured/300x200/?nature,water',
@@ -34,6 +35,7 @@ export const BoardVisibility = v.union(
 export const BoardMemberRole = v.union(
   v.literal('owner'),
   v.literal('editor'),
+  v.literal('commenter'),
   v.literal('viewer'),
 );
 
@@ -76,7 +78,7 @@ export const userBoardFavorites = defineTable({
 export const boardMembers = defineTable({
   boardId: v.id('boards'),
   userId: v.string(),
-  role: v.union(v.literal('owner'), v.literal('editor'), v.literal('viewer')),
+  role: BoardMemberRole,
   addedBy: v.string(),
   addedAt: v.number(),
 })
@@ -483,14 +485,223 @@ export const get = query({
       }),
     );
 
-    return boardsWithMetadata;
+    return boardsWithMetadata as BoardWithMetadata[];
+  },
+});
+
+export const createShareLink = mutation({
+  args: {
+    boardId: v.id('boards'),
+    role: v.union(v.literal('editor'), v.literal('viewer')),
+    expiresInDays: v.optional(v.number()),
+  },
+  handler: async (ctx, { boardId, role, expiresInDays }) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error('Unauthorized');
+
+    const board = await ctx.db.get(boardId);
+    if (!board) throw new Error('Board not found');
+
+    // Only owner can create share links
+    if (board.authorId !== identity.subject) {
+      throw new Error('Only owner can create share links');
+    }
+
+    const shareId = crypto.randomUUID();
+    const expiresAt = expiresInDays
+      ? Date.now() + expiresInDays * 24 * 60 * 60 * 1000
+      : undefined;
+
+    await ctx.db.insert('boardShareLinks', {
+      boardId,
+      shareId,
+      role,
+      expiresAt,
+      createdBy: identity.subject,
+      createdAt: Date.now(),
+    });
+
+    return { shareId, expiresAt };
+  },
+});
+
+export const joinViaShareLink = mutation({
+  args: {
+    shareId: v.string(),
+  },
+  handler: async (ctx, { shareId }) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error('Unauthorized');
+
+    const shareLink = await ctx.db
+      .query('boardShareLinks')
+      .withIndex('by_share_id', q => q.eq('shareId', shareId))
+      .unique();
+
+    if (!shareLink) throw new Error('Invalid share link');
+
+    if (shareLink.expiresAt && shareLink.expiresAt < Date.now()) {
+      throw new Error('Share link expired');
+    }
+
+    const board = await ctx.db.get(shareLink.boardId);
+    if (!board) throw new Error('Board not found');
+
+    const existing = await ctx.db
+      .query('boardMembers')
+      .withIndex('by_board_user', q =>
+        q.eq('boardId', shareLink.boardId).eq('userId', identity.subject),
+      )
+      .unique();
+
+    if (existing) {
+      return { boardId: shareLink.boardId, alreadyMember: true };
+    }
+
+    await ctx.db.insert('boardMembers', {
+      boardId: shareLink.boardId,
+      userId: identity.subject,
+      role: shareLink.role,
+      addedBy: shareLink.createdBy,
+      addedAt: Date.now(),
+    });
+
+    return { boardId: shareLink.boardId, alreadyMember: false };
   },
 });
 
 export const getDetails = query({
   args: { id: v.id('boards') },
   handler: async (ctx, args) => {
-    const board = ctx.db.get(args.id);
-    return board;
+    const identity = await ctx.auth.getUserIdentity();
+    const board = await ctx.db.get(args.id);
+
+    if (!board) return null;
+
+    if (!identity) {
+      console.log('🚫 UNAUTHORIZED ACCESS ATTEMPT TO BOARD DETAILS', identity);
+
+      return {
+        ...board,
+        isFavorite: false,
+        userRole: 'viewer',
+        isOwner: false,
+      } as BoardWithMetadata;
+    }
+
+    const userId = identity.subject;
+
+    const favorite = await ctx.db
+      .query('userBoardFavorites')
+      .withIndex('by_user_board', q =>
+        q.eq('userId', userId).eq('boardId', board._id),
+      )
+      .unique();
+
+    const membership = await ctx.db
+      .query('boardMembers')
+      .withIndex('by_board_user', q =>
+        q.eq('boardId', board._id).eq('userId', userId),
+      )
+      .unique();
+
+    return {
+      ...board,
+      isFavorite: !!favorite,
+      userRole: membership?.role,
+      isOwner: board.authorId === userId,
+    } as BoardWithMetadata;
+  },
+});
+
+export const getShareLinkWithBoard = query({
+  args: { shareId: v.string() },
+  handler: async (ctx, { shareId }) => {
+    const link = await ctx.db
+      .query('boardShareLinks')
+      .withIndex('by_share_id', q => q.eq('shareId', shareId))
+      .unique();
+
+    if (!link) return null;
+
+    if (link.expiresAt && link.expiresAt < Date.now()) {
+      return null;
+    }
+
+    const board = await ctx.db.get(link.boardId);
+    if (!board) return null;
+
+    return {
+      ...link,
+      board: {
+        id: board._id,
+        title: board.title,
+        imageUrl: board.imageUrl,
+        visibility: board.visibility,
+      },
+    };
+  },
+});
+
+export const getBoardShareLinks = query({
+  args: { boardId: v.id('boards') },
+  handler: async (ctx, { boardId }) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error('Unauthorized');
+
+    const board = await ctx.db.get(boardId);
+    if (!board) throw new Error('Board not found');
+
+    if (board.authorId !== identity.subject) {
+      throw new Error('Only owner can view share links');
+    }
+
+    const links = await ctx.db
+      .query('boardShareLinks')
+      .withIndex('by_board', q => q.eq('boardId', boardId))
+      .collect();
+
+    return links.filter(link => !link.expiresAt || link.expiresAt > Date.now());
+  },
+});
+
+export const deleteShareLink = mutation({
+  args: {
+    boardId: v.id('boards'),
+    shareId: v.string(),
+  },
+  handler: async (ctx, { boardId, shareId }) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error('Unauthorized');
+
+    const board = await ctx.db.get(boardId);
+    if (!board) throw new Error('Board not found');
+
+    if (board.authorId !== identity.subject) {
+      throw new Error('Only owner can delete share links');
+    }
+
+    const link = await ctx.db
+      .query('boardShareLinks')
+      .withIndex('by_share_id', q => q.eq('shareId', shareId))
+      .unique();
+
+    if (link && link.boardId === boardId) {
+      await ctx.db.delete(link._id);
+    }
+  },
+});
+
+export const deleteBoardsByOrg = internalMutation({
+  args: { orgId: v.string() },
+  handler: async (ctx, { orgId }) => {
+    const boards = await ctx.db
+      .query('boards')
+      .withIndex('by_org', q => q.eq('orgId', orgId))
+      .collect();
+
+    for (const board of boards) {
+      await ctx.runMutation(api.boards.deleteBoard, { boardId: board._id });
+    }
   },
 });

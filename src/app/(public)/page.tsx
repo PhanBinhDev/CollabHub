@@ -2,16 +2,20 @@
 
 import TranslateText from '@/components/shared/translate/translate-text';
 import { Button } from '@/components/ui/button';
+import { LOCAL_STORAGE_KEY } from '@/constants/key';
 import Prism from '@/features/landing-page/prism';
 import { SignInButton } from '@clerk/nextjs';
 import { IconArrowRight, IconSparkles } from '@tabler/icons-react';
 import { Authenticated, Unauthenticated } from 'convex/react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useMediaQuery } from 'usehooks-ts';
+import { useMediaQuery, useReadLocalStorage } from 'usehooks-ts';
 
 export default function LandingPage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const redirectUrl = useReadLocalStorage<string>(
+    LOCAL_STORAGE_KEY.REDIRECT_URL,
+  );
 
   return (
     <div className="w-full h-screen flex items-center justify-center relative overflow-hidden">
@@ -73,7 +77,7 @@ export default function LandingPage() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Unauthenticated>
-              <SignInButton mode="modal">
+              <SignInButton mode="modal" fallbackRedirectUrl={redirectUrl}>
                 <div className="relative group">
                   {/* Glow effect */}
                   <div className="absolute -inset-1 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition duration-300 animate-pulse" />

@@ -69,6 +69,12 @@
       "filterBy": "Lọc theo"
     },
     "description": "Mô tả",
-    "noDescription": "Chưa có mô tả"
+    "noDescription": "Chưa có mô tả",
+    "more": "khác",
+    "artist": "Sáng tác bởi ",
+    "goBack": "Quay lại",
+    "goHome": "Về trang chủ",
+    "needHelp": "Cần giúp đỡ?",
+    "contactSupport": "Liên hệ hỗ trợ"
   }
 }

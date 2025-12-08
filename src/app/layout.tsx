@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 import Modals from '@/components/modals';
 import AuthRedirect from '@/components/shared/auth-redirect';
+import { ClearRedirectAfterLogin } from '@/components/shared/clear-redirect-after-signin';
 import PageLoader from '@/components/shared/loader';
 import MultisessionAppSupport from '@/components/shared/multi-sessions';
 import { DictionaryProvider } from '@/features/internationalization/dictionary-provider';
@@ -69,6 +70,7 @@ export default async function RootLayout({ children }: Readonly<IChildren>) {
                 <ConvexClientProvider>
                   <Toaster />
                   <Modals />
+                  <ClearRedirectAfterLogin />
                   {children}
                 </ConvexClientProvider>
               </PageLoader>

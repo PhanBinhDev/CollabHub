@@ -166,7 +166,6 @@ export const deleteUser = internalMutation({
       .first();
 
     if (user) {
-      // Delete user settings
       const settings = await ctx.db
         .query('userSettings')
         .withIndex('by_user', q => q.eq('userId', user._id))
@@ -185,7 +184,6 @@ export const deleteUser = internalMutation({
         }
       }
 
-      // Delete user record
       await ctx.db.delete(user._id);
       console.log(`User ${user.email} permanently deleted`);
     }

@@ -1,7 +1,8 @@
 {
   "whiteboard": {
     "info": {
-      "goToDashboard": "Đi đến bảng điều khiển"
+      "goToDashboard": "Đi đến bảng điều khiển",
+      "editBoardName": "Chỉnh sửa tên bảng"
     },
     "empty": {
       "title": "Chưa có bảng nào",
@@ -11,7 +12,10 @@
       "tryChangeFilter": "Thử thay đổi bộ lọc hoặc tạo board mới.",
       "clearFilters": "Xóa bộ lọc"
     },
+    "you": "Bạn",
+    "signInToAccessBoard": "Vui lòng đăng nhập để truy cập bảng này",
     "createBoard": "Tạo bảng",
+    "accessDenied": "Truy cập bị từ chối",
     "boardCreatedSuccessfully": "Tạo bảng thành công",
     "boardCreationFailed": "Tạo bảng thất bại",
     "title": "Bảng vẽ nhóm",
@@ -78,6 +82,17 @@
       "createdAt": "Ngày tạo",
       "nameAsc": "Tên A-Z",
       "nameDesc": "Tên Z-A"
+    },
+    "toolbar": {
+      "pointer": "Con trỏ",
+      "pen": "Bút",
+      "typography": "Kiểu chữ",
+      "stickyNote": "Ghi chú dán",
+      "rectangle": "Hình chữ nhật",
+      "text": "Văn bản",
+      "ellipse": "Hình elip",
+      "undo": "Hoàn tác",
+      "redo": "Làm lại"
     }
   }
 }

@@ -4,6 +4,7 @@ import dashboard from './dashboard.json';
 import footer from './footer.json';
 import landing from './landing.json';
 import notifications from './notifications.json';
+import onboarding from './onboarding.json';
 import org from './org.json';
 import settings from './settings.json';
 import whiteboard from './whiteboard.json';
@@ -20,6 +21,7 @@ const vi = {
   ...workspaces,
   ...org,
   ...whiteboard,
+  ...onboarding,
 };
 
 export default vi;
