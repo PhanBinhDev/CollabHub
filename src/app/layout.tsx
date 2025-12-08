@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import { enUS, viVN } from '@clerk/localizations';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -72,6 +73,7 @@ export default async function RootLayout({ children }: Readonly<IChildren>) {
                   <Toaster />
                   <Modals />
                   <Analytics />
+                  <SpeedInsights />
                   <ClearRedirectAfterLogin />
                   {children}
                 </ConvexClientProvider>
