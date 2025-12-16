@@ -1,0 +1,13 @@
+{
+  "documents": {
+    "createDocument": "Tạo tài liệu mới",
+    "documentCreated": "Đã tạo tài liệu",
+    "createError": "Lỗi khi tạo tài liệu",
+    "name": "Tên",
+    "shared": "Chia sẻ",
+    "createdAt": "Ngày tạo",
+    "noDocuments": "Không tìm thấy tài liệu",
+    "organization": "Tổ chức",
+    "personal": "Cá nhân"
+  }
+}

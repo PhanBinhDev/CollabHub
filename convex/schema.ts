@@ -5,6 +5,7 @@ import {
   boardShareLinks,
   userBoardFavorites,
 } from './boards';
+import { documents } from './documents';
 import { emailVerifications } from './emails';
 import { notifications } from './notifications';
 import { pendingSessions } from './sessions';
@@ -20,6 +21,7 @@ const schema = defineSchema({
   userBoardFavorites,
   boardMembers,
   boardShareLinks,
+  documents,
 });
 
 export default schema;

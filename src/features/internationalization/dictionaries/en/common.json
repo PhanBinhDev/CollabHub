@@ -70,6 +70,7 @@
     "goBack": "Go Back",
     "goHome": "Go to Dashboard",
     "needHelp": "Need help?",
-    "contactSupport": "Contact Support"
+    "contactSupport": "Contact Support",
+    "endOfResults": "End of results"
   }
 }

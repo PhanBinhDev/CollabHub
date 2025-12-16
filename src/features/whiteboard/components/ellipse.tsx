@@ -1,39 +1,38 @@
-import { rgbToHex } from '@/lib/utils';
-import { RectangleLayer } from '@/types/canvas';
+'use client';
 
-interface RectangleLayerProps {
+import { rgbToHex } from '@/lib/utils';
+import { EllipseLayer } from '@/types/canvas';
+
+interface EllipseProps {
   id: string;
-  layer: RectangleLayer;
+  layer: EllipseLayer;
   onPointerDown: (e: React.PointerEvent, id: string) => void;
   selectionColor?: string;
 }
 
-const Rectangle = ({
+export const Ellipse = ({
   id,
   layer,
   onPointerDown,
   selectionColor,
-}: RectangleLayerProps) => {
-  const { height, width, x, y, fill } = layer;
+}: EllipseProps) => {
+  const { x, y, width, height, fill } = layer;
 
   return (
-    <rect
+    <ellipse
       className="drop-shadow-md"
       onPointerDown={e => onPointerDown(e, id)}
       style={{
         transform: `translate(${x}px, ${y}px)`,
         cursor: 'pointer',
-        borderRadius: '4px',
       }}
-      x={0}
-      y={0}
-      width={width}
-      height={height}
       strokeWidth={1}
       fill={rgbToHex(fill) || '#ccc'}
       stroke={selectionColor || 'transparent'}
+      cx={width / 2}
+      cy={height / 2}
+      rx={width / 2}
+      ry={height / 2}
     />
   );
 };
-
-export default Rectangle;

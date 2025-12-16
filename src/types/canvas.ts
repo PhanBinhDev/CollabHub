@@ -55,6 +55,12 @@ export type TextLayer = {
   width: number;
   height: number;
   fill: Color;
+  fontSize: number;
+  fontFamily: 'Kalam' | 'Inter' | 'Roboto' | 'Arial';
+  fontWeight: 400 | 500 | 600 | 700;
+  textAlign: 'left' | 'center' | 'right';
+  italic: boolean;
+  underline: boolean;
   value?: string;
 };
 
@@ -131,4 +137,9 @@ export enum CanvasMode {
   Pencil,
 }
 
-export type Layer = RectangleLayer | EllipseLayer | TextLayer | NoteLayer | PathLayer;
+export type Layer =
+  | RectangleLayer
+  | EllipseLayer
+  | TextLayer
+  | NoteLayer
+  | PathLayer;

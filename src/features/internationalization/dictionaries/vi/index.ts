@@ -1,6 +1,7 @@
 import auth from './auth.json';
 import common from './common.json';
 import dashboard from './dashboard.json';
+import documents from './documents.json';
 import footer from './footer.json';
 import landing from './landing.json';
 import notifications from './notifications.json';
@@ -22,6 +23,7 @@ const vi = {
   ...org,
   ...whiteboard,
   ...onboarding,
+  ...documents,
 };
 
 export default vi;

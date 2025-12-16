@@ -11,6 +11,7 @@
 import type * as apps from "../apps.js";
 import type * as auth from "../auth.js";
 import type * as boards from "../boards.js";
+import type * as documents from "../documents.js";
 import type * as emails from "../emails.js";
 import type * as http from "../http.js";
 import type * as notifications from "../notifications.js";
@@ -36,6 +37,7 @@ declare const fullApi: ApiFromModules<{
   apps: typeof apps;
   auth: typeof auth;
   boards: typeof boards;
+  documents: typeof documents;
   emails: typeof emails;
   http: typeof http;
   notifications: typeof notifications;

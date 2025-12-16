@@ -1,0 +1,13 @@
+{
+  "documents": {
+    "createDocument": "Start a new document",
+    "documentCreated": "Document has been created",
+    "createError": "Error creating document",
+    "name": "Name",
+    "shared": "Shared",
+    "createdAt": "Created at",
+    "noDocuments": "No documents found",
+    "organization": "Organization",
+    "personal": "Personal"
+  }
+}

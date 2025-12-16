@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import CanvasLoading from '@/components/shared/canvas-loading';
 import NotFound from '@/components/shared/not-found';
-import { MAX_LAYERS } from '@/constants/app';
+import TextToolbar from '@/components/shared/text/toolbar';
+import { MAX_LAYERS, SELECTION_NET_THRESHOLD } from '@/constants/app';
 import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
 import {
+  findIntersectingLayersWithRectangle,
   getUserColor,
   pointerEventToCanvasPoint,
   resizeBounds,
@@ -93,7 +96,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         width: 100,
         height: 100,
         fill: lastUsedColor,
-      });
+      } as any);
 
       liveLayerId.push(layerId);
       layers.set(layerId, layer);
@@ -129,6 +132,19 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [canvasState],
   );
 
+  const startMultiSelection = useCallback((current: Point, origin: Point) => {
+    if (
+      Math.abs(current.x - origin.x) + Math.abs(current.y - origin.y) >
+      SELECTION_NET_THRESHOLD
+    ) {
+      setCanvasState({
+        mode: CanvasMode.SelectionNet,
+        origin,
+        current,
+      });
+    }
+  }, []);
+
   const translateLayer = useMutation(
     ({ storage, self }, point: Point) => {
       if (canvasState.mode !== CanvasMode.Translating) return;
@@ -155,6 +171,34 @@ export const Canvas = ({ boardId }: CanvasProps) => {
       });
     },
     [canvasState],
+  );
+
+  const updateSelectionNet = useMutation(
+    ({ storage, setMyPresence }, current: Point, origin: Point) => {
+      const layers = storage.get('layers').toImmutable();
+      setCanvasState({
+        mode: CanvasMode.SelectionNet,
+        origin,
+        current,
+      });
+
+      const ids = findIntersectingLayersWithRectangle(
+        layerIds,
+        layers,
+        origin,
+        current,
+      );
+
+      setMyPresence(
+        {
+          selection: ids,
+        },
+        {
+          addToHistory: true,
+        },
+      );
+    },
+    [layerIds],
   );
 
   const unSelectLayer = useMutation(({ self, setMyPresence }) => {
@@ -188,7 +232,11 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
       const current = pointerEventToCanvasPoint(e, camera);
 
-      if (canvasState.mode === CanvasMode.Translating) {
+      if (canvasState.mode === CanvasMode.Pressing) {
+        startMultiSelection(current, canvasState.origin);
+      } else if (canvasState.mode === CanvasMode.SelectionNet) {
+        updateSelectionNet(current, canvasState.origin);
+      } else if (canvasState.mode === CanvasMode.Translating) {
         translateLayer(current);
       } else if (canvasState.mode === CanvasMode.Resizing) {
         resizeLayer(current);
@@ -304,6 +352,8 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     return <NotFound />;
   }
 
+  const canEdit = board.isOwner || board.userRole === 'editor';
+
   return (
     <main className="h-full w-full bg-neutral-100 touch-none">
       <Info boardId={boardId} />
@@ -315,9 +365,19 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         redo={history.redo}
         canUndo={canUndo}
         canRedo={canRedo}
-        canEdit={board.isOwner || board.userRole === 'editor'}
+        canEdit={canEdit}
       />
-      <SelectionToolbar camera={camera} setLastUsedColor={setLastUsedColor} />
+      {canEdit && (
+        <>
+          <SelectionToolbar
+            camera={camera}
+            setLastUsedColor={setLastUsedColor}
+          />
+
+          <TextToolbar camera={camera} />
+        </>
+      )}
+
       <svg
         className="w-[100vw] h-[100vh]"
         onWheel={onWheel}
@@ -341,6 +401,17 @@ export const Canvas = ({ boardId }: CanvasProps) => {
           ))}
 
           <SelectionBox onResizeHandlePointerDown={onResizeHandlePointerDown} />
+
+          {canvasState.mode === CanvasMode.SelectionNet &&
+            canvasState.current != null && (
+              <rect
+                className="fill-blue-500/5 stroke-blue-500 stroke-1"
+                x={Math.min(canvasState.origin.x, canvasState.current.x)}
+                y={Math.min(canvasState.origin.y, canvasState.current.y)}
+                width={Math.abs(canvasState.current.x - canvasState.origin.x)}
+                height={Math.abs(canvasState.current.y - canvasState.origin.y)}
+              />
+            )}
 
           <CursorsPresence />
         </g>
