@@ -75,7 +75,8 @@
         "setPrimarySuccess": "Email set as primary successfully.",
         "setPrimaryError": "There was an error setting the primary email. Please try again later.",
         "cancelSetPrimary": "Primary email change cancelled",
-        "retryVerifyAfter": "Please wait {{seconds}} seconds before retrying verification."
+        "retryVerifyAfter": "Please wait {{seconds}} seconds before retrying verification.",
+        "emailNotVerified": "Email is not verified. Please verify it before setting as primary."
       },
       "sessions": {
         "title": "Active Sessions",

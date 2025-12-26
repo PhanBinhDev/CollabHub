@@ -71,11 +71,12 @@
         "deleteEmailButton": "Xóa Email",
         "setPrimaryTitle": "Đặt làm Email chính",
         "setPrimaryDescription": "Bạn có chắc chắn muốn đặt địa chỉ email này làm email chính của mình không?",
-        "setPrimaryButton": "Đặt làm Chính",
-        "setPrimarySuccess": "Đặt email làm chính thành công.",
+        "setPrimaryButton": "Đặt làm email chính",
+        "setPrimarySuccess": "Thay đổi email chính thành công.",
         "setPrimaryError": "Đã xảy ra lỗi khi đặt email làm chính. Vui lòng thử lại sau.",
         "cancelSetPrimary": "Đã hủy đặt email làm chính",
-        "retryVerifyAfter": "Vui lòng chờ {{seconds}} giây trước khi thử xác minh lại."
+        "retryVerifyAfter": "Vui lòng chờ {{seconds}} giây trước khi thử xác minh lại.",
+        "emailNotVerified": "Email chưa được xác minh. Vui lòng xác minh trước khi đặt làm email chính."
       },
       "sessions": {
         "title": "Phiên đăng nhập",

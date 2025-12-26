@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
+import { addEmail } from '@/app/actions/account';
 import TranslateText from '@/components/shared/translate/translate-text';
 import { Button } from '@/components/ui/button';
 import {
@@ -43,9 +44,7 @@ export const ModalAddEmail = () => {
 
   const [isVerifying, setIsVerifying] = useState(false);
 
-  const createEmailAddress = useReverification((email: string) =>
-    user?.createEmailAddress({ email }),
-  );
+  const createEmailAddress = useReverification(addEmail);
 
   const emailForm = useForm<EmailFormValues>({
     resolver: zodResolver(emailSchema),
@@ -62,17 +61,18 @@ export const ModalAddEmail = () => {
 
   const onEmailSubmit = async (data: EmailFormValues) => {
     try {
-      // Add an unverified email address to user
       const res = await createEmailAddress(data.email);
 
-      if (!res) {
+      if (!res.success) {
         toast.error(dict?.settings.account.emails.addError);
         return;
       }
 
       await user?.reload();
 
-      const emailAddress = user?.emailAddresses.find(a => a.id === res.id);
+      const emailAddress = user?.emailAddresses.find(
+        a => a.id === res.email?.id,
+      );
 
       if (!emailAddress) {
         toast.error(dict?.settings.account.emails.addError);
@@ -95,9 +95,8 @@ export const ModalAddEmail = () => {
       });
 
       toast.success(dict?.settings.account.emails.verificationSent);
+      closeModal('ADD_EMAIL');
     } catch (err: any) {
-      console.error(JSON.stringify(err, null, 2));
-
       if (err.errors?.[0]?.code === 'form_identifier_exists') {
         toast.error(dict?.settings.account.emails.emailExists);
       } else {

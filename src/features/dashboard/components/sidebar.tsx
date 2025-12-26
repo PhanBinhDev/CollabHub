@@ -20,6 +20,7 @@ import {
   IconFiles,
   IconHome,
   IconLayoutKanban,
+  IconMessage,
   IconNotes,
   IconPaint,
   IconSettings,
@@ -35,6 +36,12 @@ const navigation: NavItem[] = [
     icon: IconHome,
     translationKey: 'nav.dashboard',
     exactMatch: true,
+  },
+  {
+    name: 'Chats',
+    href: '/dashboard/chats',
+    icon: IconMessage,
+    translationKey: 'nav.chats',
   },
   {
     name: 'Notes',

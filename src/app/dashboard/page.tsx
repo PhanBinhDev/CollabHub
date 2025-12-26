@@ -21,7 +21,7 @@ const DashboardPage = () => {
   const user = useQuery(api.users.currentUser);
 
   const stats = {
-    workspaces: 0,
+    workspaces: 10,
     documents: 3,
     collaborators: 5,
     todayActivity: 12,

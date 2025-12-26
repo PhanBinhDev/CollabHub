@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 
 import { INTERVAL } from '@/constants/app';
@@ -45,8 +46,45 @@ export async function removeEmail(emailId: string) {
   }
 }
 
+export async function addEmail(email: string) {
+  const { has, userId } = await auth.protect();
+  const clerk = await clerkClient();
+
+  const shouldUserRevalidate = !has({ reverification: 'strict' });
+
+  if (shouldUserRevalidate) {
+    return reverificationError('strict');
+  }
+
+  try {
+    const newEmail = await clerk.emailAddresses.createEmailAddress({
+      emailAddress: email,
+      userId,
+    });
+
+    return {
+      success: true,
+      email: {
+        id: newEmail.id,
+        emailAddress: newEmail.emailAddress,
+        verification: newEmail.verification
+          ? {
+              status: newEmail.verification.status,
+              strategy: newEmail.verification.strategy,
+              attempts: newEmail.verification.attempts,
+              expireAt: newEmail.verification.expireAt,
+            }
+          : null,
+        linkedTo: newEmail.linkedTo,
+      },
+    };
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function setPrimaryEmail(emailId: string) {
-  const { has } = await auth.protect();
+  const { has, userId } = await auth.protect();
   const shouldUserRevalidate = !has({ reverification: 'strict' });
   if (shouldUserRevalidate) {
     return reverificationError('strict');
@@ -54,14 +92,18 @@ export async function setPrimaryEmail(emailId: string) {
 
   try {
     const clerk = await clerkClient();
-    const updated = await clerk.emailAddresses.updateEmailAddress(emailId, {
-      primary: true,
+    const updated = await clerk.users.updateUser(userId, {
+      primaryEmailAddressID: emailId,
     });
 
-    return { success: true, email: updated };
+    return {
+      success: true,
+      email: updated.primaryEmailAddress?.emailAddress,
+    };
   } catch (error) {
-    console.error('Failed to set primary email:', error);
-    return { success: false, error: 'Failed to set primary email' };
+    console.log('Error in setPrimaryEmail:', error.errors);
+
+    throw error;
   }
 }
 
