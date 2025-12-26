@@ -62,7 +62,7 @@ export default async function RootLayout({ children }: Readonly<IChildren>) {
         signInUrl={process.env.NEXT_PUBLIC_SIGN_IN_URL}
         signUpUrl={process.env.NEXT_PUBLIC_SIGN_UP_URL}
       >
-        <body className={`${inter.className} antialiased`}>
+        <body className={`${inter.className} antialiased overflow-hidden`}>
           <MultisessionAppSupport>
             <DictionaryProvider>
               <PageLoader>

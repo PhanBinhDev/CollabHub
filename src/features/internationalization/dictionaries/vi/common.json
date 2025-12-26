@@ -49,6 +49,7 @@
     "delete": "Xóa",
     "update": "Cập nhật",
     "remove": "Gỡ bỏ",
+    "reset": "Đặt lại",
     "refreshing": "Đang làm mới...",
     "loadMore": "Tải thêm",
     "loadingMore": "Đang tải thêm...",
@@ -76,6 +77,19 @@
     "goHome": "Về trang chủ",
     "needHelp": "Cần giúp đỡ?",
     "contactSupport": "Liên hệ hỗ trợ",
-    "endOfResults": "Hết kết quả"
+    "endOfResults": "Hết kết quả",
+    "table": {
+      "rowsPerPage": "Số hàng mỗi trang",
+      "page": "Trang {{page}} trên {{totalPages}}",
+      "goToFirstPage": "Đi đến trang đầu",
+      "goToPreviousPage": "Đi đến trang trước",
+      "goToNextPage": "Đi đến trang tiếp",
+      "goToLastPage": "Đi đến trang cuối",
+      "numSelectedRows": "{{count}} trong số {{totalCount}} hàng được chọn",
+      "asc": "Tăng dần",
+      "desc": "Giảm dần",
+      "hide": "Ẩn",
+      "openMenu": "Mở menu"
+    }
   }
 }

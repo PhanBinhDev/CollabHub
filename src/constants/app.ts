@@ -6,3 +6,10 @@ export const HANDLE_WIDTH = 6;
 export const SELECTION_NET_THRESHOLD = 5;
 export const LEFT_MARGIN_DEFAULT = 56;
 export const RIGHT_MARGIN_DEFAULT = 56;
+export const DEFAULT_LIMIT = 5;
+export const OPTIONS_LIMIT = [
+  DEFAULT_LIMIT,
+  DEFAULT_LIMIT * 2,
+  DEFAULT_LIMIT * 5,
+  DEFAULT_LIMIT * 10,
+];

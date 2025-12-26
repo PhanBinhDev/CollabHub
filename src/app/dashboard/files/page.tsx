@@ -1,4 +1,6 @@
 'use client';
+
+import { DEFAULT_LIMIT } from '@/constants/app';
 import { api } from '@/convex/_generated/api';
 import { useOrganization } from '@clerk/nextjs';
 import { usePaginatedQuery } from 'convex/react';
@@ -8,12 +10,12 @@ import TemplatesGallery from './_components/templates-gallery';
 
 const FilesPage = () => {
   const searchParams = useSearchParams();
-  const search = searchParams.get('search');
+  const search = searchParams.get('search') ?? '';
   const { organization } = useOrganization();
   const { results, status, loadMore } = usePaginatedQuery(
     api.documents.get,
-    { search: search ?? undefined, orgId: organization?.id ?? '' },
-    { initialNumItems: 5 },
+    { search, orgId: organization?.id ?? '' },
+    { initialNumItems: DEFAULT_LIMIT },
   );
 
   return (

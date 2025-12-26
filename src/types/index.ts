@@ -1,4 +1,3 @@
-import { FilterBoardValue, SortBoardValue } from '@/convex/boards';
 import { DictKey } from '@/features/internationalization/get-dictionaries';
 import { TablerIcon } from '@tabler/icons-react';
 
@@ -29,27 +28,4 @@ export type ModalType =
   | 'UPDATE_THUMBNAIL_BOARD'
   | 'ONBOARDING';
 
-export type ViewType = 'GRID' | 'LIST';
-
-export type ViewOption = {
-  type: ViewType;
-  icon: TablerIcon;
-  label: DictKey;
-};
-
-export type FilterOption = {
-  label: DictKey;
-  value: FilterBoardValue;
-};
-
-export type SortOption = {
-  label: DictKey;
-  value: SortBoardValue;
-};
-
-export type BoardCardOption = {
-  label: DictKey;
-  action: () => void;
-  icon: TablerIcon;
-  disabled?: boolean;
-};
+export type PaginationMode = 'offset' | 'button-load-more' | 'infinite-scroll';

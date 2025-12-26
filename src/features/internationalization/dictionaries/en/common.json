@@ -43,6 +43,7 @@
     "delete": "Delete",
     "update": "Update",
     "remove": "Remove",
+    "reset": "Reset",
     "refreshing": "Refreshing...",
     "loadMore": "Load more",
     "loadingMore": "Loading more...",
@@ -71,6 +72,19 @@
     "goHome": "Go to Dashboard",
     "needHelp": "Need help?",
     "contactSupport": "Contact Support",
-    "endOfResults": "End of results"
+    "endOfResults": "End of results",
+    "table": {
+      "rowsPerPage": "Rows per page",
+      "page": "Page {{page}} of {{totalPages}}",
+      "goToFirstPage": "Go to first page",
+      "goToPreviousPage": "Go to previous page",
+      "goToNextPage": "Go to next page",
+      "goToLastPage": "Go to last page",
+      "numSelectedRows": "{{count}} of {{totalCount}} row(s) selected",
+      "asc": "Asc",
+      "desc": "Desc",
+      "hide": "Hide",
+      "openMenu": "Open menu"
+    }
   }
 }

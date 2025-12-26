@@ -1,10 +1,4 @@
 import { defineSchema } from 'convex/server';
-import {
-  boardMembers,
-  boards,
-  boardShareLinks,
-  userBoardFavorites,
-} from './boards';
 import { documents } from './documents';
 import { emailVerifications } from './emails';
 import { notifications } from './notifications';
@@ -17,10 +11,6 @@ const schema = defineSchema({
   userSettings,
   pendingSessions,
   emailVerifications,
-  boards,
-  userBoardFavorites,
-  boardMembers,
-  boardShareLinks,
   documents,
 });
 
