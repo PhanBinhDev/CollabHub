@@ -70,7 +70,6 @@ const EmailsManagement = () => {
         );
       }
     } else {
-
       console.log('Starting email verification flow for emailId:', emailId);
       try {
         const email = clerkUser?.emailAddresses.find(e => e.id === emailId);
@@ -87,7 +86,7 @@ const EmailsManagement = () => {
         const protocol = window.location.protocol;
         const host = window.location.host;
 
-        const res =await startEmailLinkFlow({
+        const res = await startEmailLinkFlow({
           redirectUrl: `${protocol}//${host}/dashboard/settings/verify-email`,
         });
 
@@ -158,7 +157,7 @@ const EmailsManagement = () => {
         {clerkUser?.emailAddresses.map(email => (
           <div
             key={email.id}
-            className="flex items-center justify-between p-3 border rounded-lg"
+            className="flex items-center justify-between h-[58px] p-3 border rounded-lg"
           >
             <div className="flex items-center gap-3">
               <div className="space-y-1">
