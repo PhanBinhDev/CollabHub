@@ -20,6 +20,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { TablerIcon } from '@tabler/icons-react';
+import TranslateText from '../translate/translate-text';
 
 interface DataTableFacetedFilterProps<TData, TValue> {
   column?: Column<TData, TValue>;
@@ -60,7 +61,8 @@ export function DataTableFacetedFilter<TData, TValue>({
                     variant="secondary"
                     className="rounded-sm px-1 font-normal"
                   >
-                    {selectedValues.size} selected
+                    {selectedValues.size}{' '}
+                    <TranslateText value="common.table.selected" />
                   </Badge>
                 ) : (
                   options
@@ -84,7 +86,9 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandEmpty>
+              <TranslateText value="common.noResultsFound" />
+            </CommandEmpty>
             <CommandGroup>
               {options.map(option => {
                 const isSelected = selectedValues.has(option.value);
@@ -105,7 +109,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                   >
                     <div
                       className={cn(
-                        'flex size-4 items-center justify-center rounded-[4px] border',
+                        'flex size-4 items-center justify-center rounded-lg border',
                         isSelected
                           ? 'bg-primary border-primary text-primary-foreground'
                           : 'border-input [&_svg]:invisible',
@@ -134,7 +138,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                     onSelect={() => column?.setFilterValue(undefined)}
                     className="justify-center text-center"
                   >
-                    Clear filters
+                    <TranslateText value="common.table.clearFilters" />
                   </CommandItem>
                 </CommandGroup>
               </>

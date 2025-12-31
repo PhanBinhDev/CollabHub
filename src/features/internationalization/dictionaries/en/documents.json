@@ -8,6 +8,13 @@
     "createdAt": "Created at",
     "noDocuments": "No documents found",
     "organization": "Organization",
-    "personal": "Personal"
+    "personal": "Personal",
+    "columns": {
+      "title": "Title",
+      "owner": "Owner",
+      "preview": "Preview",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    }
   }
 }

@@ -85,18 +85,20 @@ export default function Header() {
 
           <div className="w-px h-6 bg-gray-300/50 mx-2" />
 
-          <ChangeLanguage />
+          <div className="flex items-center gap-2">
+            <ChangeLanguage />
 
-          <Unauthenticated>
-            <SignInButton mode="modal" fallbackRedirectUrl={redirectUrl}>
-              <Button variant="gradient" className="rounded-xl">
-                <TranslateText value="nav.getStarted" />
-              </Button>
-            </SignInButton>
-          </Unauthenticated>
-          <Authenticated>
-            <UserMenu />
-          </Authenticated>
+            <Unauthenticated>
+              <SignInButton mode="modal" fallbackRedirectUrl={redirectUrl}>
+                <Button variant="gradient" className="rounded-xl">
+                  <TranslateText value="nav.getStarted" />
+                </Button>
+              </SignInButton>
+            </Unauthenticated>
+            <Authenticated>
+              <UserMenu />
+            </Authenticated>
+          </div>
         </div>
 
         {/* Mobile navigation */}

@@ -15,16 +15,16 @@ import { cn } from '@/lib/utils';
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
-  title: string;
+  label: string | React.ReactNode;
 }
 
 export function DataTableColumnHeader<TData, TValue>({
   column,
-  title,
+  label,
   className,
 }: DataTableColumnHeaderProps<TData, TValue>) {
   if (!column.getCanSort()) {
-    return <div className={cn(className)}>{title}</div>;
+    return <div className={cn(className)}>{label}</div>;
   }
 
   return (
@@ -36,7 +36,7 @@ export function DataTableColumnHeader<TData, TValue>({
             size="sm"
             className="data-[state=open]:bg-accent -ml-3 h-8"
           >
-            <span>{title}</span>
+            <span>{label}</span>
             {column.getIsSorted() === 'desc' ? (
               <ArrowDown />
             ) : column.getIsSorted() === 'asc' ? (

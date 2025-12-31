@@ -7,6 +7,7 @@ import { Doc } from '@/convex/_generated/dataModel';
 import { IconLoader2 } from '@tabler/icons-react';
 import { PaginationStatus } from 'convex/react';
 import { columns } from './document-column';
+import { DEFAULT_LIMIT } from '@/constants/app';
 
 interface DocumentsTableProps {
   documents: Doc<'documents'>[] | undefined;
@@ -38,7 +39,7 @@ const DocumentsTable = ({
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => loadMore(5)}
+                    onClick={() => loadMore(DEFAULT_LIMIT)}
                     disabled={status !== 'CanLoadMore'}
                     className="gap-2"
                   >

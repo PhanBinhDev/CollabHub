@@ -101,8 +101,6 @@ export async function setPrimaryEmail(emailId: string) {
       email: updated.primaryEmailAddress?.emailAddress,
     };
   } catch (error) {
-    console.log('Error in setPrimaryEmail:', error.errors);
-
     throw error;
   }
 }

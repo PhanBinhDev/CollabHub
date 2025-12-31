@@ -8,6 +8,13 @@
     "createdAt": "Ngày tạo",
     "noDocuments": "Không tìm thấy tài liệu",
     "organization": "Tổ chức",
-    "personal": "Cá nhân"
+    "personal": "Cá nhân",
+    "columns": {
+      "title": "Tiêu đề",
+      "owner": "Chủ sở hữu",
+      "preview": "Xem trước",
+      "createdAt": "Ngày tạo",
+      "updatedAt": "Ngày cập nhật"
+    }
   }
 }

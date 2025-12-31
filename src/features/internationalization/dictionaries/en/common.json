@@ -74,6 +74,7 @@
     "needHelp": "Need help?",
     "contactSupport": "Contact Support",
     "endOfResults": "End of results",
+    "noResultsFound": "No results found.",
     "table": {
       "rowsPerPage": "Rows per page",
       "page": "Page {{page}} of {{totalPages}}",
@@ -85,7 +86,9 @@
       "asc": "Asc",
       "desc": "Desc",
       "hide": "Hide",
-      "openMenu": "Open menu"
+      "openMenu": "Open menu",
+      "selected": "Selected",
+      "clearFilters": "Clear filters"
     }
   }
 }

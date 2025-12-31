@@ -1,3 +1,5 @@
+import { Point } from '.';
+
 export type Color = {
   r: number;
   g: number;
@@ -72,11 +74,6 @@ export type NoteLayer = {
   height: number;
   fill: Color;
   value?: string;
-};
-
-export type Point = {
-  x: number;
-  y: number;
 };
 
 export type XYWH = {

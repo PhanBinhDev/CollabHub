@@ -9,7 +9,6 @@ import {
   IconLanguage,
   IconSettings,
   IconUser,
-  IconUsers,
 } from '@tabler/icons-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -38,12 +37,6 @@ const settingsNav: NavItem[] = [
     href: '/dashboard/settings/apps',
     icon: IconApps,
     name: 'Apps',
-  },
-  {
-    translationKey: 'settings.nav.team',
-    href: '/dashboard/settings/team',
-    icon: IconUsers,
-    name: 'Team',
   },
 ];
 

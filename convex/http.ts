@@ -64,18 +64,7 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
     }
 
     case 'organization.deleted': {
-      const orgId = event.data.id;
-
-      if (!orgId) {
-        console.log('Organization ID missing in deleted event');
-        break;
-      }
-
-      await ctx.runMutation(internal.boards.deleteBoardsByOrg, {
-        orgId,
-      });
-
-      console.log(`All boards for org ${orgId} deleted`);
+      console.log('Clerk webhook event:', event.type, event.data);
       break;
     }
 

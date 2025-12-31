@@ -4,12 +4,16 @@ import { Doc } from '@/convex/_generated/dataModel';
 import { type ColumnDef } from '@tanstack/react-table';
 
 import { DataTableColumnHeader } from '@/components/shared/table/data-table-column-header';
+import TranslateText from '@/components/shared/translate/translate-text';
 
 export const columns: ColumnDef<Doc<'documents'>>[] = [
   {
     accessorKey: 'title',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader
+        column={column}
+        label={<TranslateText value="documents.columns.title" />}
+      />
     ),
     cell: ({ row }) => (
       <span className="truncate font-medium">{row.getValue('title')}</span>
@@ -17,28 +21,36 @@ export const columns: ColumnDef<Doc<'documents'>>[] = [
   },
   {
     accessorKey: 'preview',
-    header: () => <div className="text-left px-2">Preview</div>,
+    header: () => (
+      <div className="text-left px-2">
+        <TranslateText value="documents.columns.preview" />
+      </div>
+    ),
     cell: () => <div className="size-30 bg-slate-200 rounded-md"></div>,
   },
   {
     accessorKey: 'authorId',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Author ID" />
+      <DataTableColumnHeader
+        column={column}
+        label={<TranslateText value="documents.columns.owner" />}
+      />
     ),
     cell: ({ row }) => <span>{row.getValue('authorId')}</span>,
   },
   {
-    accessorKey: 'roomId',
+    accessorKey: '_creationTime',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Room ID" />
+      <DataTableColumnHeader
+        column={column}
+        label={<TranslateText value="documents.columns.createdAt" />}
+      />
     ),
-    cell: ({ row }) => <span>{row.getValue('roomId')}</span>,
-  },
-  {
-    accessorKey: 'orgId',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Org ID" />
-    ),
-    cell: ({ row }) => <span>{row.getValue('orgId')}</span>,
+    cell: ({ row }) => {
+      const createdAt = row.getValue('_creationTime') as string;
+      console.log('createdAt', createdAt);
+
+      return <span>{new Date(createdAt).toLocaleDateString()}</span>;
+    },
   },
 ];

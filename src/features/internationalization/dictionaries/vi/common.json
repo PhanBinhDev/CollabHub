@@ -79,6 +79,7 @@
     "needHelp": "Cần giúp đỡ?",
     "contactSupport": "Liên hệ hỗ trợ",
     "endOfResults": "Hết kết quả",
+    "noResultsFound": "Không tìm thấy kết quả.",
     "table": {
       "rowsPerPage": "Số hàng mỗi trang",
       "page": "Trang {{page}} trên {{totalPages}}",
@@ -90,7 +91,9 @@
       "asc": "Tăng dần",
       "desc": "Giảm dần",
       "hide": "Ẩn",
-      "openMenu": "Mở menu"
+      "openMenu": "Mở menu",
+      "selected": "Đã chọn",
+      "clearFilters": "Xóa bộ lọc"
     }
   }
 }

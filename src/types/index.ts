@@ -29,3 +29,8 @@ export type ModalType =
   | 'ONBOARDING';
 
 export type PaginationMode = 'offset' | 'button-load-more' | 'infinite-scroll';
+
+export type Point = {
+  x: number;
+  y: number;
+};
