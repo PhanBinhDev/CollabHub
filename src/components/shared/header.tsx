@@ -32,7 +32,7 @@ export default function Header() {
         fixed top-2 left-2 right-2 md:top-4 md:left-4 md:right-4 z-50
         flex items-center justify-between
         px-4 py-2.5 md:px-6 md:py-3
-        rounded-full md:rounded-2xl
+        rounded-xl md:rounded-2xl
         max-w-7xl mx-auto
         transition-all duration-300
         ${
@@ -103,7 +103,7 @@ export default function Header() {
 
         {/* Mobile navigation */}
         <div className="flex md:hidden items-center gap-1.5">
-          <ChangeLanguage />
+          <ChangeLanguage mode="toggle" />
           <Unauthenticated>
             <SignInButton mode="modal" fallbackRedirectUrl={redirectUrl}>
               <Button size="sm" variant="gradient">

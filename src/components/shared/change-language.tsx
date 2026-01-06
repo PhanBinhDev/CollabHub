@@ -23,8 +23,37 @@ const languageFlags: Record<Locale, string> = {
   vi: '/flags/vi.png',
 };
 
-export function ChangeLanguage() {
+interface ChangeLanguageProps {
+  mode?: 'toggle' | 'dropdown';
+}
+
+export function ChangeLanguage({ mode = 'dropdown' }: ChangeLanguageProps) {
   const { locale: currentLocale, setLocale } = useClientDictionary();
+
+  if (mode === 'toggle') {
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        className="relative cursor-pointer"
+        onClick={() => {
+          const nextLocale = currentLocale === 'en' ? 'vi' : 'en';
+          setLocale(nextLocale);
+        }}
+      >
+        <Image
+          src={languageFlags[currentLocale]}
+          alt={languageNames[currentLocale]}
+          width={24}
+          height={18}
+          className="rounded-sm"
+        />
+        <span className="sr-only">
+          <Translate value="common.changeLanguage" />
+        </span>
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>

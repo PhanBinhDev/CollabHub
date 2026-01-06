@@ -1,5 +1,11 @@
-import { defineTable, paginationOptsValidator } from 'convex/server';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  defineTable,
+  paginationOptsValidator,
+  PaginationResult,
+} from 'convex/server';
 import { ConvexError, v } from 'convex/values';
+import { Doc } from './_generated/dataModel';
 import { mutation, query } from './_generated/server';
 
 export const documents = defineTable({
@@ -65,40 +71,72 @@ export const get = query({
   },
   handler: async (ctx, { search, paginationOpts, orgId }) => {
     const user = await ctx.auth.getUserIdentity();
-
     if (!user) {
       throw new ConvexError('Unauthorized');
     }
 
+    let results: PaginationResult<Doc<'documents'>>;
     if (search && orgId) {
-      return ctx.db
+      results = await ctx.db
         .query('documents')
         .withSearchIndex('search_title', q =>
           q.search('title', search).eq('orgId', orgId),
         )
         .paginate(paginationOpts);
-    }
-
-    if (search) {
-      return await ctx.db
+    } else if (search) {
+      results = await ctx.db
         .query('documents')
-        .withSearchIndex('search_title', q => {
-          return q.search('title', search).eq('authorId', user.subject);
-        })
+        .withSearchIndex('search_title', q =>
+          q.search('title', search).eq('authorId', user.subject),
+        )
         .paginate(paginationOpts);
-    }
-
-    if (orgId) {
-      return await ctx.db
+    } else if (orgId) {
+      results = await ctx.db
         .query('documents')
         .withIndex('by_organization_id', q => q.eq('orgId', orgId))
         .paginate(paginationOpts);
+    } else {
+      results = await ctx.db
+        .query('documents')
+        .withIndex('by_author_id', q => q.eq('authorId', user.subject))
+        .paginate(paginationOpts);
     }
 
-    return await ctx.db
-      .query('documents')
-      .withIndex('by_author_id', q => q.eq('authorId', user.subject))
-      .paginate(paginationOpts);
+    const authorIds = Array.from(
+      new Set(results.page.map(doc => doc.authorId)),
+    );
+
+    const authors = await Promise.all(
+      authorIds.map(async authorId => {
+        const author = await ctx.db
+          .query('users')
+          .withIndex('by_clerk_id', q => q.eq('clerkId', authorId))
+          .first();
+        if (!author) return null;
+        return {
+          clerkId: author.clerkId,
+          email: author.email,
+          username: author.username,
+          firstName: author.firstName,
+          lastName: author.lastName,
+          imageUrl: author.imageUrl,
+        };
+      }),
+    );
+    const authorMap: Record<string, (typeof authors)[number]> = {};
+    authors.forEach(author => {
+      if (author) authorMap[author.clerkId] = author;
+    });
+
+    const page = results.page.map((doc: any) => ({
+      ...doc,
+      author: authorMap[doc.authorId] ?? null,
+    }));
+
+    return {
+      ...results,
+      page,
+    };
   },
 });
 

@@ -13,3 +13,7 @@ export const OPTIONS_LIMIT = [
   DEFAULT_LIMIT * 5,
   DEFAULT_LIMIT * 10,
 ];
+export const DragDropType = {
+  KANBAN_COLUMN: 'kanban-column',
+  KANBAN_CARD: 'kanban-card',
+} as const;

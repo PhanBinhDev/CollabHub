@@ -12,8 +12,7 @@ export const getDeviceIcon = (deviceType?: string, isMobile?: boolean) => {
   return IconDeviceLaptop;
 };
 
-
 export const formatLocation = (city?: string, country?: string) => {
-    const parts = [city, country].filter(Boolean);
-    return parts.length > 0 ? parts.join(', ') : 'Unknown location';
-  };
+  const parts = [city, country].filter(Boolean);
+  return parts.length > 0 ? parts.join(', ') : 'Unknown location';
+};

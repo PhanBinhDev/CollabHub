@@ -9,9 +9,11 @@ import {
   issueLabels,
   issueMilestones,
   issues,
+  issueStages,
   labels,
   milestones,
   projects,
+  stages,
 } from './kanban';
 import { notifications } from './notifications';
 import { pendingSessions } from './sessions';
@@ -34,6 +36,8 @@ const schema = defineSchema({
   issueComponents,
   issueComments,
   issueActivity,
+  issueStages,
+  stages,
 });
 
 export default schema;
