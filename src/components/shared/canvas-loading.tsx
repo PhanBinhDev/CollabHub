@@ -1,6 +1,6 @@
-import Info from '@/features/whiteboard/components/info';
-import Participants from '@/features/whiteboard/components/participants';
-import Toolbar from '@/features/whiteboard/components/toolbar';
+// import Info from '@/features/whiteboard/components/info';
+// import Participants from '@/features/whiteboard/components/participants';
+// import Toolbar from '@/features/whiteboard/components/toolbar';
 import Spinner from './spinner';
 
 const CanvasLoading = () => {
@@ -8,9 +8,9 @@ const CanvasLoading = () => {
     <main className="w-full h-screen relative flex items-center justify-center bg-neutral-100 touch-none">
       <Spinner size={24} className="text-muted-foreground" />
 
-      <Info.Skeleton />
+      {/* <Info.Skeleton />
       <Participants.Skeleton />
-      <Toolbar.Skeleton />
+      <Toolbar.Skeleton /> */}
     </main>
   );
 };
