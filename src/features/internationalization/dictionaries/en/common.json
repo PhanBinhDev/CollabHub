@@ -88,7 +88,9 @@
       "hide": "Hide",
       "openMenu": "Open menu",
       "selected": "Selected",
-      "clearFilters": "Clear filters"
+      "clearFilters": "Clear filters",
+      "view": "View",
+      "toggleColumns": "Toggle columns"
     }
   }
 }

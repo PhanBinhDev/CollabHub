@@ -12,6 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
+import TranslateText from '../translate/translate-text';
 
 export function DataTableViewOptions<TData>({
   table,
@@ -27,11 +28,13 @@ export function DataTableViewOptions<TData>({
           className="ml-auto hidden h-8 lg:flex"
         >
           <Settings2 />
-          View
+          <TranslateText value="common.table.view" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">
-        <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+        <DropdownMenuLabel>
+          <TranslateText value="common.table.toggleColumns" />
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {table
           .getAllColumns()

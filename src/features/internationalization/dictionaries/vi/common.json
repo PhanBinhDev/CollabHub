@@ -93,7 +93,9 @@
       "hide": "Ẩn",
       "openMenu": "Mở menu",
       "selected": "Đã chọn",
-      "clearFilters": "Xóa bộ lọc"
+      "clearFilters": "Xóa bộ lọc",
+      "view": "Chế độ xem",
+      "toggleColumns": "Chuyển đổi cột"
     }
   }
 }

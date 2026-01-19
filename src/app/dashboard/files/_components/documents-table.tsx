@@ -3,11 +3,11 @@
 import { DataTable } from '@/components/shared/table/data-table';
 import TranslateText from '@/components/shared/translate/translate-text';
 import { Button } from '@/components/ui/button';
+import { DEFAULT_LIMIT } from '@/constants/app';
 import { Doc } from '@/convex/_generated/dataModel';
 import { IconLoader2 } from '@tabler/icons-react';
 import { PaginationStatus } from 'convex/react';
 import { columns } from './document-column';
-import { DEFAULT_LIMIT } from '@/constants/app';
 
 interface DocumentsTableProps {
   documents: Doc<'documents'>[] | undefined;
